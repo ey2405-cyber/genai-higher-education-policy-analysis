@@ -1,0 +1,779 @@
+---
+title: "GenAI Policy Comparative Analysis"
+subtitle: "NYC vs. Hong Kong — R Visualization"
+---
+
+# Install and load packages
+
+```{r setup, message=FALSE, warning=FALSE}
+packages <- c(
+  "tidyverse",
+  "janitor",
+  "lubridate",
+  "scales",
+  "knitr",
+  "patchwork"
+)
+
+to_install <- packages[!(packages %in% installed.packages()[, "Package"])]
+
+if (length(to_install) > 0) {
+  install.packages(to_install)
+}
+
+library(tidyverse)
+library(janitor)
+library(lubridate)
+library(scales)
+library(knitr)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 9,
+  fig.height = 5.5
+)
+```
+
+# 1. Load `new.csv`
+
+```{r load-csv}
+# Main data source
+path <- "GenAI_Policy_Comparative_LearningAnalytics_Reformatted.csv"
+
+if (!file.exists(path)) {
+  path <- "/mnt/data/GenAI_Policy_Comparative_LearningAnalytics_Reformatted.csv"
+}
+
+if (!file.exists(path)) {
+  path <- file.choose()
+}
+
+policies_all <- read_csv(path, show_col_types = FALSE) %>%
+  clean_names()
+```
+
+# 2. Helper functions
+
+```{r helper-functions}
+clean_text <- function(x) {
+  x %>%
+    as.character() %>%
+    str_squish() %>%
+    na_if("") %>%
+    na_if("NA") %>%
+    na_if("N/A") %>%
+    na_if("NULL")
+}
+
+parse_publication_year <- function(x) {
+  x <- clean_text(x)
+
+  excel_numeric <- suppressWarnings(as.numeric(x))
+
+  year_from_excel <- case_when(
+    !is.na(excel_numeric) & excel_numeric > 30000 ~
+      year(as.Date(excel_numeric, origin = "1899-12-30")),
+    TRUE ~ NA_integer_
+  )
+
+  year_from_text <- case_when(
+    is.na(year_from_excel) ~ str_extract(x, "(19|20)\\d{2}") %>% as.integer(),
+    TRUE ~ NA_integer_
+  )
+
+  coalesce(year_from_excel, year_from_text)
+}
+
+parse_no_ai_flag <- function(x) {
+  x <- clean_text(x)
+
+  case_when(
+    is.na(x) ~ FALSE,
+    str_to_lower(x) %in% c("1", "yes", "true", "y") ~ TRUE,
+    str_detect(str_to_lower(x), "no ai") ~ TRUE,
+    TRUE ~ FALSE
+  )
+}
+
+standardize_tier <- function(x) {
+  x <- clean_text(x)
+  x_lower <- str_to_lower(x)
+
+  case_when(
+    str_detect(x_lower, "national|federal") ~ "National/Federal",
+    str_detect(x_lower, "city|territory|state|hksar|new york") ~ "City/Territory",
+    str_detect(x_lower, "institution") ~ "Institutional",
+    str_detect(x_lower, "faculty|school|department") ~ "Faculty/Department",
+    str_detect(x_lower, "course") ~ "Course-wide",
+    TRUE ~ x
+  )
+}
+
+standardize_stance <- function(x) {
+  x <- clean_text(x)
+  x_lower <- str_to_lower(x)
+
+  case_when(
+    str_detect(x_lower, "prohibitive") ~ "Prohibitive",
+    str_detect(x_lower, "cautious") ~ "Cautious",
+    str_detect(x_lower, "functional") ~ "Functional",
+    str_detect(x_lower, "encouraging") ~ "Encouraging",
+    str_detect(x_lower, "not specified|unspecified") ~ "Not specified",
+    TRUE ~ x
+  )
+}
+
+make_safe_filename <- function(x) {
+  x %>%
+    str_to_lower() %>%
+    str_replace_all("[^a-z0-9]+", "_") %>%
+    str_replace_all("_$", "")
+}
+```
+
+# 3. Clean data for visualization
+
+```{r clean-data}
+if (!"no_ai_teaching_content_is_not_ai_policy" %in% names(policies_all)) {
+  policies_all$no_ai_teaching_content_is_not_ai_policy <- NA_character_
+}
+
+if (!"source_tab" %in% names(policies_all)) {
+  policies_all$source_tab <- "new.csv"
+}
+
+policies <- policies_all %>%
+  mutate(
+    across(everything(), clean_text),
+
+    no_ai_flag = parse_no_ai_flag(no_ai_teaching_content_is_not_ai_policy),
+
+    region = case_when(
+      str_to_lower(region) %in% c("nyc", "new york city") ~ "NYC",
+      str_to_lower(region) %in% c("hong kong", "hk") ~ "Hong Kong",
+      TRUE ~ region
+    ),
+
+    tier = standardize_tier(tier),
+    stance = standardize_stance(stance),
+
+    # Remove duplicate discretion label
+    discretion = str_replace(
+      clean_text(discretion),
+      regex("faculty/dept decides", ignore_case = TRUE),
+      "Faculty/Department decides"
+    ),
+
+    tier = factor(
+      tier,
+      levels = c(
+        "National/Federal",
+        "City/Territory",
+        "Institutional",
+        "Faculty/Department",
+        "Course-wide"
+      )
+    ),
+
+    stance = factor(
+      stance,
+      levels = c(
+        "Prohibitive",
+        "Cautious",
+        "Functional",
+        "Encouraging",
+        "Not specified"
+      )
+    ),
+
+    stance_score = case_when(
+      !is.na(suppressWarnings(as.numeric(stance_number))) ~ suppressWarnings(as.numeric(stance_number)),
+      stance == "Prohibitive" ~ 0,
+      stance == "Cautious" ~ 1,
+      stance == "Functional" ~ 2,
+      stance == "Encouraging" ~ 3,
+      TRUE ~ NA_real_
+    ),
+
+    publication_year = parse_publication_year(publication_date),
+
+    institution_group = coalesce(
+      clean_text(institution),
+      clean_text(jurisdiction_institution),
+      "Unspecified / government-wide"
+    ),
+
+    any_disclosure = disclosure %in% c(
+      "Required",
+      "Recommended",
+      "Conditional"
+    ),
+
+    required_disclosure = disclosure == "Required",
+
+    strong_enforcement = enforcement %in% c(
+      "Explicit penalties",
+      "Referenced to integrity code"
+    ),
+
+    learning_focus = focus_primary %in% c(
+      "Pedagogy/Learning",
+      "AI Literacy",
+      "Professional Readiness"
+    ),
+
+    governance_focus = focus_primary %in% c(
+      "Academic Integrity",
+      "Privacy/Data/Ethics"
+    )
+  )
+
+# Exclude rows marked as "No AI" or teaching content not considered policy
+policies_clean <- policies %>%
+  filter(no_ai_flag == FALSE)
+
+# Core variables used in the visualizations
+code_vars <- c(
+  "tier",
+  "stance",
+  "disclosure",
+  "discretion",
+  "focus_primary",
+  "focus_secondary",
+  "enforcement",
+  "coverage",
+  "document_type"
+)
+
+code_vars <- code_vars[code_vars %in% names(policies_clean)]
+```
+
+# 4. Histogram-style count plots by region
+
+```{r histogram-functions}
+plot_count_histogram <- function(data, variable, title_text = NULL) {
+
+  if (is.null(title_text)) {
+    title_text <- paste("Histogram-style Counts:", str_to_title(str_replace_all(variable, "_", " ")))
+  }
+
+  data %>%
+    filter(!is.na(region), !is.na(.data[[variable]])) %>%
+    mutate(category = as.factor(.data[[variable]])) %>%
+    ggplot(aes(x = category, fill = region)) +
+    geom_bar(position = position_dodge(width = 0.8), width = 0.7) +
+    geom_text(
+      stat = "count",
+      aes(label = after_stat(count)),
+      position = position_dodge(width = 0.8),
+      vjust = -0.3,
+      size = 3
+    ) +
+    labs(
+      title = title_text,
+      x = str_to_title(str_replace_all(variable, "_", " ")),
+      y = "Number of documents",
+      fill = "Region"
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      legend.position = "bottom",
+      plot.title = element_text(face = "bold", size = 14),
+      axis.text.x = element_text(angle = 30, hjust = 1)
+    )
+}
+
+plot_pct_bar <- function(data, variable, title_text, legend_title = NULL) {
+
+  data %>%
+    filter(!is.na(.data[[variable]])) %>%
+    mutate(category = as.factor(.data[[variable]])) %>%
+    count(region, category, name = "n") %>%
+    group_by(region) %>%
+    mutate(pct = n / sum(n)) %>%
+    ungroup() %>%
+    ggplot(aes(x = region, y = pct, fill = category)) +
+    geom_col(width = 0.7, color = "white") +
+    geom_text(
+      aes(label = if_else(pct >= 0.06, percent(pct, accuracy = 1), "")),
+      position = position_stack(vjust = 0.5),
+      size = 3.4
+    ) +
+    scale_y_continuous(labels = percent_format()) +
+    labs(
+      title = title_text,
+      x = NULL,
+      y = "Percent of documents",
+      fill = ifelse(
+        is.null(legend_title),
+        str_to_title(str_replace_all(variable, "_", " ")),
+        legend_title
+      )
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      legend.position = "bottom",
+      plot.title = element_text(face = "bold", size = 14),
+      legend.text = element_text(size = 9)
+    )
+}
+```
+
+```{r histograms-main}
+histogram_plots <- map(
+  code_vars,
+  ~ plot_count_histogram(
+    policies_clean,
+    .x,
+    paste("Histogram-style Counts of", str_to_title(str_replace_all(.x, "_", " ")), "by Region")
+  )
+)
+
+names(histogram_plots) <- code_vars
+
+histogram_plots$stance
+histogram_plots$disclosure
+histogram_plots$enforcement
+histogram_plots$focus_primary
+histogram_plots$tier
+```
+
+# 5. Percentage comparisons: NYC vs. Hong Kong
+
+```{r percentage-plots}
+fig_1_stance <- plot_pct_bar(
+  policies_clean %>% filter(stance != "Not specified"),
+  "stance",
+  "Policy Stance by Region",
+  "Policy stance"
+)
+
+fig_2_disclosure <- plot_pct_bar(
+  policies_clean,
+  "disclosure",
+  "Disclosure Expectations by Region",
+  "Disclosure expectation"
+)
+
+fig_3_enforcement <- plot_pct_bar(
+  policies_clean,
+  "enforcement",
+  "Enforcement Approach by Region",
+  "Enforcement approach"
+)
+
+fig_4_focus <- plot_pct_bar(
+  policies_clean,
+  "focus_primary",
+  "Primary Policy Focus by Region",
+  "Primary focus"
+)
+
+fig_1_stance
+fig_2_disclosure
+fig_3_enforcement
+fig_4_focus
+```
+
+# 6. Governance tier by stance
+
+```{r stance-by-tier}
+stance_by_tier <- policies_clean %>%
+  filter(!is.na(region), !is.na(tier), !is.na(stance)) %>%
+  count(region, tier, stance, name = "n") %>%
+  group_by(region, tier) %>%
+  mutate(
+    pct = n / sum(n),
+    pct_label = percent(pct, accuracy = 1)
+  ) %>%
+  ungroup()
+
+fig_6_stance_by_tier <- ggplot(
+  stance_by_tier,
+  aes(x = tier, y = pct, fill = stance)
+) +
+  geom_col(color = "white") +
+  geom_text(
+    aes(label = if_else(pct >= 0.06, pct_label, "")),
+    position = position_stack(vjust = 0.5),
+    size = 3
+  ) +
+  facet_wrap(~ region) +
+  coord_flip() +
+  scale_y_continuous(labels = percent_format()) +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
+  labs(
+    title = "Policy Stance by Governance Tier and Region",
+    x = NULL,
+    y = "Percent of documents within tier",
+    fill = "Policy stance"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(face = "bold", size = 14),
+    strip.text = element_text(face = "bold", size = 12)
+  )
+
+fig_6_stance_by_tier
+```
+
+```{r stance-by-tier-stacked-100}
+# 100% stacked bar: stance by tier, faceted by region
+stance_colors <- c(
+  "Prohibitive" = "#C0392B",
+  "Cautious"    = "#E67E22",
+  "Functional"  = "#95A5A6",
+  "Encouraging" = "#27AE60"
+)
+
+plot_data_100 <- policies_clean %>%
+  filter(
+    !is.na(region),
+    !is.na(tier),
+    !is.na(stance),
+    stance != "Not specified"
+  ) %>%
+  mutate(
+    stance = factor(stance, levels = names(stance_colors)),
+    region = factor(region, levels = c("Hong Kong", "NYC"))
+  )
+
+stance_by_tier_100 <- plot_data_100 %>%
+  count(region, tier, stance, .drop = FALSE) %>%
+  group_by(region, tier) %>%
+  mutate(
+    pct = if (sum(n) > 0) n / sum(n) else rep(NA_real_, dplyr::n()),
+    pct_label = if_else(!is.na(pct) & pct >= 0.06, percent(pct, accuracy = 1), "")
+  ) %>%
+  ungroup()
+
+fig_6b_stacked_100 <- ggplot(
+  stance_by_tier_100,
+  aes(x = tier, y = pct, fill = stance)
+) +
+  geom_col(width = 0.7, colour = "white", linewidth = 0.5) +
+  geom_text(
+    aes(label = pct_label),
+    position = position_stack(vjust = 0.5),
+    colour   = "white",
+    fontface = "bold",
+    size     = 3.2
+  ) +
+  facet_wrap(~ region, ncol = 2) +
+  coord_flip() +
+  scale_y_continuous(
+    labels = percent_format(),
+    limits = c(0, 1.02),
+    expand = c(0, 0)
+  ) +
+  scale_fill_manual(
+    values = stance_colors,
+    breaks = names(stance_colors),
+    name   = "Policy Stance"
+  ) +
+  labs(
+    title    = "Policy Stance by Governance Tier — 100% Stacked",
+    subtitle = "Hong Kong vs. New York City",
+    x        = NULL,
+    y        = "Percentage of documents within tier"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title         = element_text(face = "bold", size = 14),
+    plot.subtitle      = element_text(size = 11, colour = "grey40"),
+    strip.text         = element_text(face = "bold", size = 12),
+    legend.position    = "bottom",
+    legend.title       = element_text(face = "bold"),
+    panel.grid.major.y = element_blank()
+  ) +
+  guides(fill = guide_legend(nrow = 1))
+
+fig_6b_stacked_100
+```
+
+# 7. Heatmap of Policy Stance by Governance Tier
+
+```{r stance-tier-heatmap}
+fig_7_heatmap <- stance_by_tier %>%
+  ggplot(aes(x = stance, y = tier, fill = pct)) +
+  geom_tile(color = "white") +
+  geom_text(aes(label = percent(pct, accuracy = 1)), size = 3.3) +
+  facet_wrap(~ region) +
+  scale_fill_continuous(labels = percent_format()) +
+  labs(
+    title = "Heatmap of Policy Stance by Governance Tier",
+    x = "Policy stance",
+    y = "Governance tier",
+    fill = "Percent"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    axis.text.x = element_text(angle = 30, hjust = 1),
+    strip.text = element_text(face = "bold", size = 12)
+  )
+
+fig_7_heatmap
+```
+
+# 8. Within-city comparisons by institution / jurisdiction
+
+```{r within-city-functions}
+plot_within_city <- function(data, region_value, variable) {
+
+  data %>%
+    filter(
+      region == region_value,
+      !is.na(institution_group),
+      !is.na(.data[[variable]])
+    ) %>%
+    mutate(category = .data[[variable]]) %>%
+    count(institution_group, category, name = "n") %>%
+    group_by(institution_group) %>%
+    mutate(
+      pct = n / sum(n),
+      pct_label = percent(pct, accuracy = 1)
+    ) %>%
+    ungroup() %>%
+    ggplot(aes(x = reorder(institution_group, pct), y = pct, fill = category)) +
+    geom_col(width = 0.7, color = "white") +
+    geom_text(
+      aes(label = if_else(pct >= 0.08, pct_label, "")),
+      position = position_stack(vjust = 0.5),
+      size = 2.8
+    ) +
+    coord_flip() +
+    scale_y_continuous(labels = percent_format()) +
+    labs(
+      title = paste(
+        region_value,
+        str_to_title(str_replace_all(variable, "_", " ")),
+        "by Institution / Jurisdiction"
+      ),
+      x = NULL,
+      y = "Percent of documents within institution/jurisdiction",
+      fill = str_to_title(str_replace_all(variable, "_", " "))
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      legend.position = "bottom",
+      legend.text = element_text(size = 8),
+      plot.title = element_text(face = "bold", size = 13)
+    )
+}
+```
+
+```{r within-city-plots}
+nyc_disclosure_institution <- plot_within_city(policies_clean, "NYC", "disclosure")
+hk_disclosure_institution <- plot_within_city(policies_clean, "Hong Kong", "disclosure")
+
+nyc_stance_institution <- plot_within_city(policies_clean, "NYC", "stance")
+hk_stance_institution <- plot_within_city(policies_clean, "Hong Kong", "stance")
+
+nyc_disclosure_institution
+hk_disclosure_institution
+nyc_stance_institution
+hk_stance_institution
+```
+
+# 9. Binary policy feature comparison visualization
+
+```{r binary-feature-visualization}
+binary_vars <- c(
+  "any_disclosure",
+  "required_disclosure",
+  "strong_enforcement",
+  "learning_focus",
+  "governance_focus"
+)
+
+binary_summary <- policies_clean %>%
+  select(region, all_of(binary_vars)) %>%
+  pivot_longer(
+    cols = all_of(binary_vars),
+    names_to = "policy_feature",
+    values_to = "value"
+  ) %>%
+  group_by(policy_feature, region) %>%
+  summarise(
+    n_yes = sum(value, na.rm = TRUE),
+    total = n(),
+    pct_yes = n_yes / total,
+    .groups = "drop"
+  ) %>%
+  mutate(
+    pct_label = percent(pct_yes, accuracy = 0.1),
+    policy_feature = recode(
+      policy_feature,
+      any_disclosure = "Any disclosure expected",
+      required_disclosure = "Disclosure required",
+      strong_enforcement = "Strong enforcement",
+      learning_focus = "Learning-oriented focus",
+      governance_focus = "Governance/integrity focus"
+    )
+  )
+
+fig_8_binary <- ggplot(
+  binary_summary,
+  aes(x = policy_feature, y = pct_yes, fill = region)
+) +
+  geom_col(position = position_dodge(width = 0.8), width = 0.7) +
+  geom_text(
+    aes(label = percent(pct_yes, accuracy = 1)),
+    position = position_dodge(width = 0.8),
+    vjust = -0.3,
+    size = 3.5
+  ) +
+  coord_flip() +
+  scale_y_continuous(labels = percent_format(), limits = c(0, 1)) +
+  labs(
+    title = "Key Policy Features by Region",
+    x = NULL,
+    y = "Percent of documents",
+    fill = "Region"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(face = "bold", size = 14)
+  )
+
+fig_8_binary
+```
+
+# 10. 100% stacked bar by institution, separate plots for HK and NYC
+```{r}
+
+# Clean institution names and combine Columbia + Columbia University and remove other institutions
+plot_data_clean <- plot_data_100 %>%
+  mutate(
+    institution = str_squish(institution),
+    institution = case_when(
+      str_to_lower(institution) %in% c("columbia", "columbia university") ~ "Columbia University",
+      TRUE ~ institution
+    ),
+    stance = str_squish(stance),
+    stance = factor(
+      stance,
+      levels = c("Encouraging", "Functional", "Cautious", "Prohibitive")
+    )
+  ) %>%
+  filter(
+  !is.na(region),
+  !is.na(institution),
+  institution != "",
+  !institution %in% c("NYCPS", "OTI"),
+  !is.na(stance)
+)
+
+# Calculate percentages
+institution_stance <- plot_data_clean %>%
+  count(region, institution, stance, name = "n") %>%
+  group_by(region, institution) %>%
+  complete(
+    stance = factor(
+      c("Encouraging", "Functional", "Cautious", "Prohibitive"),
+      levels = c("Encouraging", "Functional", "Cautious", "Prohibitive")
+    ),
+    fill = list(n = 0)
+  ) %>%
+  mutate(
+    pct = n / sum(n),
+    pct_label = if_else(n > 0 & pct >= 0.06, percent(pct, accuracy = 1), "")
+  ) %>%
+  ungroup()
+
+# Colors
+stance_colors <- c(
+  "Encouraging" = "#259E45",
+  "Functional" = "#93A3A2",
+  "Cautious" = "#E16A12",
+  "Prohibitive" = "#B22222"
+)
+
+# Function to make graph
+make_institution_plot <- function(data, selected_region, title_text) {
+  data %>%
+    filter(region == selected_region) %>%
+    ggplot(aes(x = institution, y = pct, fill = stance)) +
+    geom_col(width = 0.6, color = "white") +
+    geom_text(
+      aes(label = pct_label),
+      position = position_stack(vjust = 0.5),
+      color = "white",
+      fontface = "bold",
+      size = 3.5
+    ) +
+    scale_y_continuous(
+      labels = percent_format(accuracy = 1),
+      limits = c(0, 1),
+      expand = expansion(mult = c(0, 0.02))
+    ) +
+    scale_fill_manual(
+      values = stance_colors,
+      drop = FALSE,
+      name = "Policy Stance"
+    ) +
+    labs(
+      title = title_text,
+      x = "Institution",
+      y = "Percentage of documents"
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      plot.title = element_text(face = "bold", size = 9),
+      axis.text.x = element_text(angle = 20, hjust = 1),
+      legend.title = element_text(face = "bold"),
+      panel.grid.major.x = element_blank()
+    )
+}
+
+# Hong Kong first
+hk_stance_institution <- make_institution_plot(
+  institution_stance,
+  "Hong Kong",
+  "Hong Kong — Policy Stance by Institution"
+)
+
+# NYC second
+nyc_stance_institution <- make_institution_plot(
+  institution_stance,
+  "NYC",
+  "NYC — Policy Stance by Institution"
+)
+
+# Side-by-side plot
+patchwork::wrap_plots(
+  hk_stance_institution,
+  nyc_stance_institution,
+  ncol = 2,
+  guides = "collect"
+) &
+  theme(legend.position = "right")
+```
+
+
+# 11. Coverage and discretion graphs
+
+```{r coverage-discretion}
+fig_10_coverage <- plot_pct_bar(
+  policies_clean,
+  "coverage",
+  "Figure 10. Coverage of GenAI Policy Documents by Region",
+  "Coverage"
+)
+
+fig_11_discretion <- plot_pct_bar(
+  policies_clean,
+  "discretion",
+  "Policy Discretion by Region",
+  "Discretion"
+)
+
+fig_10_coverage
+fig_11_discretion
+```
+
