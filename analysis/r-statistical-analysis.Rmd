@@ -1,0 +1,853 @@
+---
+title: "GenAI Policy Comparative Analysis"
+subtitle: "NYC vs. Hong Kong — Statistical Analysis in Rstudio"
+---
+
+# 1. Setup
+
+```{r setup, message=FALSE, warning=FALSE}
+packages <- c(
+  "tidyverse",
+  "janitor",
+  "broom",
+  "car",
+  "knitr",
+  "writexl",
+  "readr"
+)
+
+to_install <- packages[!(packages %in% installed.packages()[, "Package"])]
+if (length(to_install) > 0) {
+  install.packages(to_install)
+}
+
+library(tidyverse)
+library(janitor)
+library(broom)
+library(car)
+library(knitr)
+library(writexl)
+library(readr)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+# 2. Load data
+
+```{r load-data}
+path <- "GenAI_Policy_Comparative_LearningAnalytics_Reformatted.csv"
+
+if (!file.exists(path)) {
+  path <- "/mnt/data/GenAI_Policy_Comparative_LearningAnalytics_Reformatted.csv"
+}
+
+if (!file.exists(path)) {
+  path <- file.choose()
+}
+
+raw_df <- read_csv(path, show_col_types = FALSE)
+
+glimpse(raw_df)
+```
+
+# 3. Helper functions
+
+```{r helper-functions}
+clean_text <- function(x) {
+  x %>%
+    as.character() %>%
+    str_replace_all("\\r\\n|\\n|\\r", " ") %>%
+    str_squish() %>%
+    na_if("") %>%
+    na_if("NA") %>%
+    na_if("N/A") %>%
+    na_if("NULL")
+}
+
+fmt_p <- function(p) {
+  case_when(
+    is.na(p) ~ NA_character_,
+    p < .001 ~ "< .001",
+    TRUE ~ paste0("= ", sprintf("%.3f", p))
+  )
+}
+
+cramers_v_from_table <- function(tab) {
+  if (nrow(tab) < 2 || ncol(tab) < 2 || sum(tab) == 0) {
+    return(NA_real_)
+  }
+
+  chi <- suppressWarnings(chisq.test(tab, correct = FALSE))
+  chi_sq <- as.numeric(chi$statistic)
+  n <- sum(tab)
+  min_dim <- min(nrow(tab), ncol(tab)) - 1
+
+  if (min_dim <= 0) {
+    return(NA_real_)
+  }
+
+  sqrt(chi_sq / (n * min_dim))
+}
+
+safe_type2_anova <- function(model) {
+  out <- tryCatch(
+    broom::tidy(car::Anova(model, type = 2)),
+    error = function(e) {
+      message("Type II ANOVA failed; returning base R anova() table instead. Error: ", e$message)
+      broom::tidy(anova(model))
+    }
+  )
+
+  out
+}
+
+standardize_institution <- function(x) {
+  case_when(
+    is.na(x) ~ NA_character_,
+    x %in% c("Columbia", "Columbia University") ~ "Columbia University",
+    x == "NYU" ~ "NYU",
+    x == "CUNY" ~ "CUNY",
+    str_detect(str_to_lower(x), "hku|hong kong univ") ~ "HKU",
+    str_detect(str_to_lower(x), "polyu|polytechnic") ~ "PolyU",
+    str_detect(str_to_lower(x), "lingnan") ~ "Lingnan",
+    TRUE ~ x
+  )
+}
+```
+
+# 4. Clean and prepare data
+
+```{r clean-data}
+policy_df <- raw_df %>%
+  clean_names() %>%
+  mutate(
+    across(everything(), clean_text),
+
+    region = case_when(
+      str_to_lower(region) %in% c("nyc", "new york city") ~ "NYC",
+      str_to_lower(region) %in% c("hong kong", "hk") ~ "Hong Kong",
+      TRUE ~ region
+    ),
+
+    tier = case_when(
+      str_detect(str_to_lower(tier), "national|federal") ~ "National/Federal",
+      str_detect(str_to_lower(tier), "city|territory|state|hksar|new york") ~ "City/Territory",
+      str_detect(str_to_lower(tier), "institution") ~ "Institutional",
+      str_detect(str_to_lower(tier), "faculty|school|department") ~ "Faculty/Department",
+      str_detect(str_to_lower(tier), "course") ~ "Course-wide",
+      TRUE ~ tier
+    ),
+
+    stance = case_when(
+      str_detect(str_to_lower(stance), "prohibitive") ~ "Prohibitive",
+      str_detect(str_to_lower(stance), "cautious") ~ "Cautious",
+      str_detect(str_to_lower(stance), "functional") ~ "Functional",
+      str_detect(str_to_lower(stance), "encouraging") ~ "Encouraging",
+      str_detect(str_to_lower(stance), "not specified|unspecified") ~ "Not specified",
+      TRUE ~ stance
+    ),
+
+    discretion = str_replace(
+      discretion,
+      regex("faculty/dept decides", ignore_case = TRUE),
+      "Faculty/Department decides"
+    ),
+
+    institution_group = coalesce(institution, jurisdiction_institution),
+    institution_group = standardize_institution(institution_group),
+
+    tier_numeric = suppressWarnings(as.numeric(tier_number)),
+    stance_numeric = suppressWarnings(as.numeric(stance_number)),
+
+    tier_numeric = if_else(
+      is.na(tier_numeric),
+      case_when(
+        tier == "National/Federal" ~ 1,
+        tier == "City/Territory" ~ 2,
+        tier == "Institutional" ~ 3,
+        tier == "Faculty/Department" ~ 4,
+        tier == "Course-wide" ~ 5,
+        TRUE ~ NA_real_
+      ),
+      tier_numeric
+    ),
+
+    stance_numeric = if_else(
+      is.na(stance_numeric),
+      case_when(
+        stance == "Prohibitive" ~ 0,
+        stance == "Cautious" ~ 1,
+        stance == "Functional" ~ 2,
+        stance == "Encouraging" ~ 3,
+        TRUE ~ NA_real_
+      ),
+      stance_numeric
+    ),
+
+    tier_factor = factor(
+      tier,
+      levels = c(
+        "National/Federal",
+        "City/Territory",
+        "Institutional",
+        "Faculty/Department",
+        "Course-wide"
+      )
+    ),
+
+    stance_factor = factor(
+      stance,
+      levels = c(
+        "Prohibitive",
+        "Cautious",
+        "Functional",
+        "Encouraging"
+      )
+    ),
+
+    region = factor(region, levels = c("NYC", "Hong Kong")),
+    governance_domain = factor(governance_domain)
+  )
+
+# Exclude "Not specified" rows
+analysis_df <- policy_df %>%
+  filter(stance != "Not specified")
+
+sample_size <- analysis_df %>%
+  count(region, name = "n_documents")
+
+sample_size %>% kable()
+```
+
+# 5. Data quality checks
+
+```{r data-quality}
+missing_summary <- analysis_df %>%
+  summarise(
+    total_documents = n(),
+    missing_id = sum(is.na(id)),
+    missing_region = sum(is.na(region)),
+    missing_tier = sum(is.na(tier)),
+    missing_tier_numeric = sum(is.na(tier_numeric)),
+    missing_stance = sum(is.na(stance)),
+    missing_stance_numeric = sum(is.na(stance_numeric)),
+    missing_institution = sum(is.na(institution)),
+    missing_institution_group = sum(is.na(institution_group)),
+    missing_document_type = sum(is.na(document_type)),
+    missing_disclosure = sum(is.na(disclosure)),
+    missing_discretion = sum(is.na(discretion)),
+    missing_focus_primary = sum(is.na(focus_primary)),
+    missing_focus_secondary = sum(is.na(focus_secondary)),
+    missing_enforcement = sum(is.na(enforcement)),
+    missing_coverage = sum(is.na(coverage)),
+    missing_source_url = sum(is.na(source_url))
+  )
+
+missing_summary %>% kable()
+
+duplicate_ids <- analysis_df %>%
+  count(id, name = "n") %>%
+  filter(n > 1, !is.na(id))
+
+duplicate_urls <- analysis_df %>%
+  count(source_url, name = "n") %>%
+  filter(n > 1, !is.na(source_url))
+
+duplicate_ids %>% kable()
+duplicate_urls %>% kable()
+```
+
+# 6. Descriptive summaries
+
+```{r descriptive-summaries}
+region_counts <- analysis_df %>%
+  count(region, name = "count")
+
+region_counts %>% kable()
+
+stance_counts_by_region <- analysis_df %>%
+  count(region, stance, name = "n") %>%
+  group_by(region) %>%
+  mutate(pct = n / sum(n)) %>%
+  ungroup()
+
+stance_counts_by_region %>% kable(digits = 3)
+
+tier_counts_by_region <- analysis_df %>%
+  count(region, tier_factor, name = "n") %>%
+  group_by(region) %>%
+  mutate(pct = n / sum(n)) %>%
+  ungroup()
+
+tier_counts_by_region %>% kable(digits = 3)
+
+stance_descriptives <- analysis_df %>%
+  filter(!is.na(stance_numeric)) %>%
+  group_by(region) %>%
+  summarise(
+    n = n(),
+    mean = mean(stance_numeric),
+    median = median(stance_numeric),
+    sd = sd(stance_numeric),
+    min = min(stance_numeric),
+    max = max(stance_numeric),
+    pct_prohibitive = mean(stance_numeric == 0),
+    pct_encouraging = mean(stance_numeric == 3),
+    .groups = "drop"
+  )
+
+stance_descriptives %>% kable(digits = 3)
+
+stance_by_tier_descriptives <- analysis_df %>%
+  filter(!is.na(stance_numeric), !is.na(tier_factor)) %>%
+  group_by(region, tier_factor) %>%
+  summarise(
+    n = n(),
+    mean = mean(stance_numeric),
+    median = median(stance_numeric),
+    sd = sd(stance_numeric),
+    .groups = "drop"
+  )
+
+stance_by_tier_descriptives %>% kable(digits = 3)
+```
+
+# 7. Two-way ANOVA: stance by tier and region
+
+This section replicates the notebook's Type II ANOVA for `Stance_Numeric ~ C(Tier_Numeric) + C(Region) + C(Tier_Numeric):C(Region)`.
+
+```{r anova-tier-region}
+anova_df_full <- analysis_df %>%
+  filter(!is.na(stance_numeric), !is.na(tier_factor), !is.na(region)) %>%
+  mutate(
+    tier_factor = factor(tier_factor),
+    region = factor(region)
+  )
+
+anova_tier_region_model <- lm(stance_numeric ~ tier_factor * region, data = anova_df_full)
+
+anova_tier_region <- safe_type2_anova(anova_tier_region_model) %>%
+  mutate(p_apa = fmt_p(p.value))
+
+anova_tier_region %>% kable(digits = 3)
+```
+
+# 8. Overall Mann-Whitney U test: stance by region
+
+```{r mann-whitney-overall}
+mann_whitney_overall <- wilcox.test(
+  stance_numeric ~ region,
+  data = anova_df_full,
+  exact = FALSE
+)
+
+mann_whitney_overall_table <- tibble(
+  comparison = "NYC vs Hong Kong",
+  statistic_w = unname(mann_whitney_overall$statistic),
+  p_value = mann_whitney_overall$p.value,
+  p_apa = fmt_p(mann_whitney_overall$p.value),
+  nyc_median = median(anova_df_full$stance_numeric[anova_df_full$region == "NYC"], na.rm = TRUE),
+  hong_kong_median = median(anova_df_full$stance_numeric[anova_df_full$region == "Hong Kong"], na.rm = TRUE),
+  nyc_mean = mean(anova_df_full$stance_numeric[anova_df_full$region == "NYC"], na.rm = TRUE),
+  hong_kong_mean = mean(anova_df_full$stance_numeric[anova_df_full$region == "Hong Kong"], na.rm = TRUE)
+)
+
+mann_whitney_overall_table %>% kable(digits = 3)
+```
+
+# 9. Kendall's Tau: tier and stance
+
+```{r kendall-tau}
+kendall_df <- anova_df_full %>%
+  filter(!is.na(tier_numeric), !is.na(stance_numeric))
+
+kendall_result <- cor.test(
+  kendall_df$tier_numeric,
+  kendall_df$stance_numeric,
+  method = "kendall",
+  exact = FALSE
+)
+
+kendall_table <- tibble(
+  method = "Kendall's Tau",
+  tau = unname(kendall_result$estimate),
+  p_value = kendall_result$p.value,
+  p_apa = fmt_p(kendall_result$p.value),
+  n = nrow(kendall_df)
+)
+
+kendall_table %>% kable(digits = 3)
+```
+
+# 10. Institution-by-tier ANOVA tables
+
+```{r institution-tier-anova}
+anova_df_institutions <- analysis_df %>%
+  filter(!is.na(stance_numeric), !is.na(tier_factor), !is.na(institution_group)) %>%
+  mutate(
+    institution_group = factor(institution_group),
+    tier_factor = factor(tier_factor)
+  )
+
+institution_tier_interaction_model <- lm(
+  stance_numeric ~ institution_group * tier_factor,
+  data = anova_df_institutions
+)
+
+institution_tier_interaction_anova <- safe_type2_anova(institution_tier_interaction_model) %>%
+  mutate(p_apa = fmt_p(p.value))
+
+institution_tier_interaction_anova %>% kable(digits = 3)
+
+institution_tier_main_effects_model <- lm(
+  stance_numeric ~ institution_group + tier_factor,
+  data = anova_df_institutions
+)
+
+institution_tier_main_effects_anova <- safe_type2_anova(institution_tier_main_effects_model) %>%
+  mutate(p_apa = fmt_p(p.value))
+
+institution_tier_main_effects_anova %>% kable(digits = 3)
+```
+
+# 11. One-way ANOVA: institutional differences within each tier
+
+```{r one-way-anova-by-tier}
+run_oneway_anova_by_tier <- function(data, tier_value) {
+  tier_subset <- data %>%
+    filter(tier_factor == tier_value) %>%
+    droplevels()
+
+  n_institutions <- n_distinct(tier_subset$institution_group)
+
+  if (nrow(tier_subset) <= n_institutions || n_institutions < 2) {
+    return(tibble(
+      tier = as.character(tier_value),
+      n = nrow(tier_subset),
+      n_institutions = n_institutions,
+      term = NA_character_,
+      statistic = NA_real_,
+      p_value = NA_real_,
+      p_apa = NA_character_,
+      note = "Skipped: not enough data for one-way ANOVA"
+    ))
+  }
+
+  model <- lm(stance_numeric ~ institution_group, data = tier_subset)
+
+  broom::tidy(anova(model)) %>%
+    filter(term == "institution_group") %>%
+    transmute(
+      tier = as.character(tier_value),
+      n = nrow(tier_subset),
+      n_institutions = n_institutions,
+      term = term,
+      statistic = statistic,
+      p_value = p.value,
+      p_apa = fmt_p(p.value),
+      note = NA_character_
+    )
+}
+
+oneway_anova_by_tier <- map_dfr(
+  levels(anova_df_institutions$tier_factor),
+  ~ run_oneway_anova_by_tier(anova_df_institutions, .x)
+)
+
+oneway_anova_by_tier %>% kable(digits = 3)
+```
+
+# 12. Kruskal-Wallis tests: institutional differences within each tier
+
+```{r kruskal-by-tier}
+run_kruskal_by_tier <- function(data, tier_value, region_value = NULL) {
+  test_data <- data %>%
+    filter(tier_factor == tier_value)
+
+  if (!is.null(region_value)) {
+    test_data <- test_data %>% filter(region == region_value)
+  }
+
+  test_data <- test_data %>%
+    filter(!is.na(stance_numeric), !is.na(institution_group)) %>%
+    droplevels()
+
+  n_institutions <- n_distinct(test_data$institution_group)
+
+  if (nrow(test_data) < 2 || n_institutions < 2) {
+    return(tibble(
+      region = if (is.null(region_value)) "All regions" else as.character(region_value),
+      tier = as.character(tier_value),
+      n = nrow(test_data),
+      n_institutions = n_institutions,
+      statistic_h = NA_real_,
+      p_value = NA_real_,
+      p_apa = NA_character_,
+      note = "Skipped: not enough data for Kruskal-Wallis"
+    ))
+  }
+
+  result <- tryCatch(
+    kruskal.test(stance_numeric ~ institution_group, data = test_data),
+    error = function(e) NULL
+  )
+
+  if (is.null(result)) {
+    return(tibble(
+      region = if (is.null(region_value)) "All regions" else as.character(region_value),
+      tier = as.character(tier_value),
+      n = nrow(test_data),
+      n_institutions = n_institutions,
+      statistic_h = NA_real_,
+      p_value = NA_real_,
+      p_apa = NA_character_,
+      note = "Skipped: test failed"
+    ))
+  }
+
+  tibble(
+    region = if (is.null(region_value)) "All regions" else as.character(region_value),
+    tier = as.character(tier_value),
+    n = nrow(test_data),
+    n_institutions = n_institutions,
+    statistic_h = unname(result$statistic),
+    p_value = result$p.value,
+    p_apa = fmt_p(result$p.value),
+    note = NA_character_
+  )
+}
+
+kruskal_all_regions_by_tier <- map_dfr(
+  levels(anova_df_institutions$tier_factor),
+  ~ run_kruskal_by_tier(anova_df_institutions, .x)
+)
+
+kruskal_by_region_tier <- crossing(
+  region = levels(droplevels(anova_df_institutions$region)),
+  tier = levels(anova_df_institutions$tier_factor)
+) %>%
+  pmap_dfr(\(region, tier) run_kruskal_by_tier(anova_df_institutions, tier, region))
+
+kruskal_all_regions_by_tier %>% kable(digits = 3)
+kruskal_by_region_tier %>% kable(digits = 3)
+```
+
+# 13. Chi-square tests: nominal variables by region
+
+```{r chi-square-nominal-by-region}
+nominal_columns <- c(
+  "document_type",
+  "disclosure",
+  "discretion",
+  "focus_primary",
+  "enforcement",
+  "coverage"
+)
+
+run_chi_square <- function(data, variable) {
+  test_data <- data %>%
+    filter(!is.na(region), !is.na(.data[[variable]]))
+
+  tab <- table(test_data$region, test_data[[variable]])
+
+  if (nrow(tab) < 2 || ncol(tab) < 2) {
+    return(tibble(
+      variable = variable,
+      n = sum(tab),
+      chi_square = NA_real_,
+      df = NA_real_,
+      p_value = NA_real_,
+      p_apa = NA_character_,
+      cramers_v = NA_real_,
+      note = "Skipped: insufficient table dimensions"
+    ))
+  }
+
+  result <- suppressWarnings(chisq.test(tab, correct = FALSE))
+
+  tibble(
+    variable = variable,
+    n = sum(tab),
+    chi_square = unname(result$statistic),
+    df = unname(result$parameter),
+    p_value = result$p.value,
+    p_apa = fmt_p(result$p.value),
+    cramers_v = cramers_v_from_table(tab),
+    note = NA_character_
+  )
+}
+
+chi_square_nominal_by_region <- map_dfr(
+  nominal_columns,
+  ~ run_chi_square(anova_df_full, .x)
+)
+
+chi_square_nominal_by_region %>% kable(digits = 3)
+```
+
+# 14. Fisher / Monte Carlo exact tests: nominal variables by region
+
+```{r fisher-nominal-by-region}
+run_fisher_region <- function(data, variable) {
+  test_data <- data %>%
+    filter(!is.na(region), !is.na(.data[[variable]]))
+
+  tab <- table(test_data$region, test_data[[variable]])
+
+  if (nrow(tab) < 2 || ncol(tab) < 2) {
+    return(tibble(
+      variable = variable,
+      n = sum(tab),
+      fisher_p = NA_real_,
+      fisher_p_apa = NA_character_,
+      cramers_v = NA_real_,
+      note = "Skipped: insufficient table dimensions"
+    ))
+  }
+
+  fisher_result <- fisher.test(tab, simulate.p.value = TRUE, B = 10000)
+
+  tibble(
+    variable = variable,
+    n = sum(tab),
+    fisher_p = fisher_result$p.value,
+    fisher_p_apa = fmt_p(fisher_result$p.value),
+    cramers_v = cramers_v_from_table(tab),
+    note = NA_character_
+  )
+}
+
+fisher_nominal_by_region <- map_dfr(
+  nominal_columns,
+  ~ run_fisher_region(anova_df_full, .x)
+)
+
+fisher_nominal_by_region %>% kable(digits = 3)
+```
+
+# 15. Fisher / Monte Carlo exact tests: selected nominal variables by tier and region
+
+```{r fisher-by-tier}
+nominal_columns_by_tier <- c(
+  "focus_primary",
+  "discretion",
+  "document_type"
+)
+
+run_fisher_by_tier <- function(data, tier_value, variable) {
+  test_data <- data %>%
+    filter(tier_factor == tier_value, !is.na(region), !is.na(.data[[variable]])) %>%
+    droplevels()
+
+  tab <- table(test_data$region, test_data[[variable]])
+
+  if (nrow(tab) < 2 || ncol(tab) < 2 || sum(tab) < 2) {
+    return(tibble(
+      tier = as.character(tier_value),
+      variable = variable,
+      n = sum(tab),
+      fisher_p = NA_real_,
+      fisher_p_apa = NA_character_,
+      cramers_v = NA_real_,
+      note = "Skipped: insufficient table dimensions"
+    ))
+  }
+
+  fisher_result <- fisher.test(tab, simulate.p.value = TRUE, B = 10000)
+
+  tibble(
+    tier = as.character(tier_value),
+    variable = variable,
+    n = sum(tab),
+    fisher_p = fisher_result$p.value,
+    fisher_p_apa = fmt_p(fisher_result$p.value),
+    cramers_v = cramers_v_from_table(tab),
+    note = NA_character_
+  )
+}
+
+fisher_nominal_by_tier <- crossing(
+  tier = levels(anova_df_full$tier_factor),
+  variable = nominal_columns_by_tier
+) %>%
+  pmap_dfr(\(tier, variable) run_fisher_by_tier(anova_df_full, tier, variable))
+
+fisher_nominal_by_tier %>% kable(digits = 3)
+```
+
+# 16. Mann-Whitney U tests: stance by region within each tier
+
+```{r mann-whitney-by-tier}
+run_mann_whitney_by_tier <- function(data, tier_value) {
+  test_data <- data %>%
+    filter(tier_factor == tier_value, !is.na(stance_numeric), !is.na(region)) %>%
+    droplevels()
+
+  region_counts <- test_data %>%
+    count(region, name = "n")
+
+  if (n_distinct(test_data$region) < 2 || any(region_counts$n == 0)) {
+    return(tibble(
+      tier = as.character(tier_value),
+      n = nrow(test_data),
+      statistic_w = NA_real_,
+      p_value = NA_real_,
+      p_apa = NA_character_,
+      nyc_median = NA_real_,
+      hong_kong_median = NA_real_,
+      nyc_mean = NA_real_,
+      hong_kong_mean = NA_real_,
+      note = "Skipped: both regions are required"
+    ))
+  }
+
+  result <- wilcox.test(stance_numeric ~ region, data = test_data, exact = FALSE)
+
+  tibble(
+    tier = as.character(tier_value),
+    n = nrow(test_data),
+    statistic_w = unname(result$statistic),
+    p_value = result$p.value,
+    p_apa = fmt_p(result$p.value),
+    nyc_median = median(test_data$stance_numeric[test_data$region == "NYC"], na.rm = TRUE),
+    hong_kong_median = median(test_data$stance_numeric[test_data$region == "Hong Kong"], na.rm = TRUE),
+    nyc_mean = mean(test_data$stance_numeric[test_data$region == "NYC"], na.rm = TRUE),
+    hong_kong_mean = mean(test_data$stance_numeric[test_data$region == "Hong Kong"], na.rm = TRUE),
+    note = NA_character_
+  )
+}
+
+mann_whitney_by_tier <- map_dfr(
+  levels(anova_df_full$tier_factor),
+  ~ run_mann_whitney_by_tier(anova_df_full, .x)
+)
+
+mann_whitney_by_tier %>% kable(digits = 3)
+```
+
+# 17. Binary policy feature comparisons
+
+```{r binary-policy-features}
+binary_df <- analysis_df %>%
+  mutate(
+    any_disclosure = disclosure %in% c("Required", "Recommended", "Conditional"),
+    required_disclosure = disclosure == "Required",
+    strong_enforcement = enforcement %in% c("Explicit penalties", "Referenced to integrity code"),
+    learning_focus = focus_primary %in% c("Pedagogy/Learning", "AI Literacy", "Professional Readiness"),
+    governance_focus = focus_primary %in% c("Academic Integrity", "Privacy/Data/Ethics")
+  )
+
+binary_vars <- c(
+  "any_disclosure",
+  "required_disclosure",
+  "strong_enforcement",
+  "learning_focus",
+  "governance_focus"
+)
+
+binary_summary <- binary_df %>%
+  select(region, all_of(binary_vars)) %>%
+  pivot_longer(
+    cols = all_of(binary_vars),
+    names_to = "policy_feature",
+    values_to = "value"
+  ) %>%
+  group_by(policy_feature, region) %>%
+  summarise(
+    n_yes = sum(value, na.rm = TRUE),
+    total = n(),
+    pct_yes = n_yes / total,
+    .groups = "drop"
+  ) %>%
+  mutate(
+    policy_feature = dplyr::recode(
+      policy_feature,
+      any_disclosure = "Any disclosure expected",
+      required_disclosure = "Disclosure required",
+      strong_enforcement = "Strong enforcement",
+      learning_focus = "Learning-oriented focus",
+      governance_focus = "Governance/integrity focus"
+    )
+  )
+
+binary_summary %>% kable(digits = 3)
+
+run_binary_fisher <- function(data, variable) {
+  test_data <- data %>%
+    filter(!is.na(region), !is.na(.data[[variable]]))
+
+  tab <- table(test_data$region, test_data[[variable]])
+
+  if (nrow(tab) < 2 || ncol(tab) < 2) {
+    return(tibble(
+      indicator = variable,
+      fisher_p = NA_real_,
+      fisher_p_apa = NA_character_,
+      note = "Skipped: insufficient table dimensions"
+    ))
+  }
+
+  fisher_result <- fisher.test(tab)
+
+  tibble(
+    indicator = variable,
+    fisher_p = fisher_result$p.value,
+    fisher_p_apa = fmt_p(fisher_result$p.value),
+    note = NA_character_
+  )
+}
+
+binary_tests <- map_dfr(
+  binary_vars,
+  ~ run_binary_fisher(binary_df, .x)
+)
+
+binary_tests %>% kable(digits = 3)
+```
+
+# 18. Export all analysis tables - Reproducibility
+
+```{r export-tables}
+dir.create("genai_policy_outputs_newcsv", showWarnings = FALSE)
+
+analysis_tables <- list(
+  sample_size = sample_size,
+  missing_summary = missing_summary,
+  duplicate_ids = duplicate_ids,
+  duplicate_urls = duplicate_urls,
+  region_counts = region_counts,
+  stance_counts_by_region = stance_counts_by_region,
+  tier_counts_by_region = tier_counts_by_region,
+  stance_descriptives = stance_descriptives,
+  stance_by_tier_descriptives = stance_by_tier_descriptives,
+  anova_tier_region = anova_tier_region,
+  mann_whitney_overall = mann_whitney_overall_table,
+  kendall_tau = kendall_table,
+  institution_tier_interaction_anova = institution_tier_interaction_anova,
+  institution_tier_main_effects_anova = institution_tier_main_effects_anova,
+  oneway_anova_by_tier = oneway_anova_by_tier,
+  kruskal_all_regions_by_tier = kruskal_all_regions_by_tier,
+  kruskal_by_region_tier = kruskal_by_region_tier,
+  chi_square_nominal_by_region = chi_square_nominal_by_region,
+  fisher_nominal_by_region = fisher_nominal_by_region,
+  fisher_nominal_by_tier = fisher_nominal_by_tier,
+  mann_whitney_by_tier = mann_whitney_by_tier,
+  binary_summary = binary_summary,
+  binary_tests = binary_tests
+)
+
+walk2(
+  analysis_tables,
+  names(analysis_tables),
+  ~ write_csv(.x, file.path("genai_policy_outputs_newcsv", paste0(.y, ".csv")))
+)
+
+write_xlsx(
+  analysis_tables,
+  "genai_policy_outputs_newcsv/genai_policy_newcsv_analysis_tables.xlsx"
+)
+```

@@ -1,0 +1,88 @@
+---
+title: "HUDK4051 — Mean GenAI Policy Stance Across Governance Tiers"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                      fig.width = 10, fig.height = 6)
+```
+
+# Load Libraries
+
+```{r libraries}
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+# Load Data
+
+```{r load}
+nyc <- read_excel("GenAI_Policy_Comparative_LearningAnalytics.xlsx",
+                  sheet = "NEW_NYC_Coding", skip = 3) %>%
+  filter(!is.na(ID)) %>%
+  mutate(Region = "NYC")
+
+hk <- read_excel("GenAI_Policy_Comparative_LearningAnalytics.xlsx",
+                 sheet = "NEW_HK_Coding", skip = 3) %>%
+  filter(!is.na(ID)) %>%
+  mutate(Region = "Hong Kong")
+
+df <- bind_rows(nyc, hk) %>%
+  filter(Stance %in% c("Prohibitive", "Cautious", "Functional", "Encouraging"))
+
+cat("Total documents:", nrow(df), "\n")
+```
+
+# Methodology
+
+Each document's stance was converted to an ordinal numerical score: Prohibitive = 0, Cautious = 1, Functional = 2, Encouraging = 3. This mapping preserves the rank order while permitting aggregation. For each region–tier combination, we computed the mean stance score across all documents assigned to that cell, then plotted the trajectories.
+
+```{r compute}
+stance_map <- c("Prohibitive" = 0, "Cautious" = 1,
+                "Functional" = 2, "Encouraging" = 3)
+
+tier_order <- c("National/Federal", "City/Territory", "Institutional",
+                "Faculty/Department", "Course-wide")
+
+mean_df <- df %>%
+  mutate(stance_num = stance_map[Stance],
+         Tier = factor(Tier, levels = tier_order)) %>%
+  group_by(Region, Tier) %>%
+  summarise(mean_stance = mean(stance_num, na.rm = TRUE),
+            n = n(), .groups = "drop")
+
+mean_df
+```
+
+# Figure: Mean Stance Across Governance Tiers
+
+```{r line-chart}
+ggplot(mean_df, aes(x = Tier, y = mean_stance,
+                    group = Region, color = Region)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(aes(shape = Region), size = 4) +
+  geom_text(aes(label = sprintf("%.2f", mean_stance)),
+            vjust = -1.2, size = 3.5, show.legend = FALSE) +
+  scale_color_manual(values = c("Hong Kong" = "#ff7f0e",
+                                "NYC" = "#1f77b4")) +
+  scale_y_continuous(limits = c(-0.2, 3.3),
+                     breaks = seq(0, 3, 0.5)) +
+  labs(
+    title = "Mean GenAI Policy Stance Across Governance Tiers",
+    x = "Governance Tier",
+    y = "Mean Stance Score\n(0 = Prohibitive, 3 = Encouraging)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    axis.text.x = element_text(angle = 20, hjust = 1),
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    legend.position = "bottom",
+    panel.border = element_rect(
+      color = "black",
+      fill = NA,
+      linewidth = 0.8
+    )
+  )
+```
