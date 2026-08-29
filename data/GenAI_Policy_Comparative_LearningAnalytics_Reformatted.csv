@@ -1,0 +1,580 @@
+ID,Tier,Region,Jurisdiction / Institution,Institution,Document Title,Document Type,Publication Date,Source URL,Stance,Disclosure,Discretion,Focus (Primary),Focus (Secondary),Enforcement,Coverage,Key Quote (verbatim),Coder Notes,Coder,Date Coded,Stance #,Tier #,Governance Domain
+NYC-001,National/Federal,NYC,US Federal (White House),,National Policy Framework for Artificial Intelligence,Executive Order,12/20/2026,https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf,Functional,Not specified,Gov-mandated,Professional Readiness,AI Literacy,Guidance only,Whole community,"“The federal government must establish a federal AI policy framework to protect American rights, support innovation, and prevent a fragmented patchwork of state regulations.”",,EY,05/15,2,1,External
+NYC-002,National/Federal,NYC,US Federal (White House),,"Executive Order: Eliminating State Law Obstruction of National AI Policy
+",Executive Order,11/12/2025,https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/,Encouraging,Not specified,Gov-mandated,Professional Readiness,AI Literacy,Guidance only,Whole community, It is the policy of the United States to sustain and enhance the United States’ global AI dominance through a minimally burdensome national policy framework for AI. ,,EY,05/15,3,1,External
+NYC-003,National/Federal,NYC,ACUS (Administrative Conference of the United States),,ACUS Policy on Use of Generative AI ,Law/Regulation,10/12/2025,https://www.acus.gov/sites/default/files/documents/ACUS_Policy_on_Use_of_GenAI-20251210.pdf,Cautious,Required,Gov-mandated,Privacy/Data/Ethics,Academic Integrity,Referenced to integrity code,Whole community,Federal employees must disclose GenAI use and must not input sensitive or confidential information into public AI tools,,EY,05/15,1,1,External
+NYC-004,National/Federal,NYC,US Federal (White House),,Advancing Artificial Intelligence Education for American Youth ,Executive Order,4/23/2025,https://www.whitehouse.gov/presidential-actions/2025/04/advancing-artificial-intelligence-education-for-american-youth/,Encouraging,Not specified,Gov-mandated,Professional Readiness,Pedagogy/Learning,Guidance only,Whole community,"“It is the policy of the United States to promote AI literacy and proficiency among Americans by promoting the appropriate integration of AI into education, providing comprehensive AI training for educators, and fostering early exposure to AI concepts and technology to develop an AI-ready workforce and the next generation of American AI innovators.”",,EY,05/15,3,1,External
+NYC-005,National/Federal,NYC,US Federal (White House),,Ensuring a National Policy Framework for AI ,Executive Order,12/11/2025,https://www.whitehouse.gov/presidential-actions/2025/12/eliminating-state-law-obstruction-of-national-artificial-intelligence-policy/,Encouraging,Not specified,Gov-mandated,Professional Readiness,Privacy/Data/Ethics,Explicit penalties,Whole community,“United States AI companies must be free to innovate without cumbersome regulation.”,,EY,05/15,3,1,External
+NYC-006,City/Territory,NYC,NYC — Office of Technology and Innovation (OTI),OTI,NYC Use Guidance: Generative Artificial Intelligence,Official Guidance,30/2/2025,https://www.nyc.gov/assets/oti/downloads/pdf/New-York-City-Generative-AI-Use-Guidance.pdf,Cautious,Required,Gov-mandated,Privacy/Data/Ethics,AI Literacy,Guidance only,Whole community,"""The City is committed to a responsible approach to emerging technologies. This Use Guidance provides a framework for the responsible use of GenAI by City personnel, aligned with the City’s AI Principles, and applicable laws and policies.""",,EY,,1,2,External
+NYC-007,City/Territory,NYC,"New York City — Office of Technology and Innovation (OTI), Strategic Initiatives Division",OTI,Preliminary Use Guidance: Generative Artificial Intelligence,Official Guidance,3/1/2024,https://www.nyc.gov/assets/oti/downloads/pdf/about/preliminary-use-guidance-general-artificial-intelligence.pdf,Cautious,Required,Gov-mandated,Privacy/Data/Ethics,AI Literacy,Referenced to integrity code,Whole community,"In order to support critical engagement by end users and maintain public trust in city government, it is best practice to proactively disclose the use of Generative AI in all contexts",,EY,,1,2,External
+NYC-008,City/Territory,NYC,NYC Office of Technology and Innovation,OTI,NYC Artificial Intelligence Action Plan,Official Guidance,,https://www.nyc.gov/assets/oti/downloads/pdf/reports/artificial-intelligence-action-plan.pdf,Cautious,Not specified,Gov-mandated,Privacy/Data/Ethics,AI Literacy,Guidance only,Whole community,"“The NYC AI Action Plan introduces seven new initiatives… toward harnessing the power of AI to deliver positive outcomes for New Yorkers, while carefully mitigating the risks these technologies present.”",,EY,,1,2,External
+NYC-009,City/Territory,NYC,NYC Office of Technology and Innovation,OTI,NYC AI Action Plan Annual Progress Report - 2025,Other,10/16/2025,https://www.nyc.gov/assets/oti/downloads/pdf/AI-Action-Plan-Progress-Report-Year-2.pdf,Cautious,Not specified,Gov-mandated,Privacy/Data/Ethics,AI Literacy,None stated,Whole community,"“The Action Plan included 37 actions across seven initiatives focused on supporting city agencies’ efforts to understand and use AI tools, fostering appropriate governance across the city…”",,EY,,1,2,External
+NYC-010,City/Territory,NYC,NYC Public Schools,NYCPS,NYC Public Schools (NYCPS) AI Guidance,Other,3/1/2026,https://www.schools.nyc.gov/about-us/vision-and-mission/artificial-intelligence/guidance-on-artificial-intelligence-full,Cautious,Required,Hybrid,AI Literacy,Pedagogy/Learning,Referenced to integrity code,Whole community,"“The NYCPS Traffic Light Approach… establishes when AI use is prohibited, when AI use requires careful consideration and judgment, and when AI is approved for use.”",,EY,,1,2,External
+NYC-011,Institutional,NYC,New York University,NYU,NYU Information Technology AI Primer,FAQ/Resource Page,,https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/primer.html,Functional,Not specified,Not specified,AI Literacy,Privacy/Data/Ethics,Guidance only,Whole community,"While the models are immensely powerful tools, they require careful integration, governance, and human oversight to manage issues like bias, misinformation (hallucinations), and intellectual property, ensuring their power is used responsibly.
+",,EY,,2,3,Internal
+NYC-012,Institutional,NYC,New York University,NYU,Student Learning with Generative AI,FAQ/Resource Page,,https://www.nyu.edu/faculty/teaching-and-learning-resources/Student-Learning-with-Generative-AI.html,Functional,Recommended,Institution-mandated,AI Literacy,Pedagogy/Learning,Guidance only,Students and Faculty,"Students and faculty may use AI tools for learning and research; they should understand how AI works, evaluate outputs critically, and cite AI use where appropriate",,EY,,2,3,Internal
+NYC-013,Institutional,NYC,New York University,NYU,Adapting Assignments to Generative AI,University Policy,,https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/adapting-assignments-to-generative-AI.html,Functional,Recommended,Instructor decides,AI Literacy,Academic Integrity,Referenced to integrity code,Faculty only,"Even if an instructor does not intend to change individual assignments, the availability and generality of these tools increases the need for clarity around the instructor’s expectations. Whatever strategies an instructor might adopt for individual assignments or a whole course, instructors should explain to students what is expected around AI use. ",,EY,,2,3,Internal
+NYC-014,Institutional,NYC,New York University,NYU,Frequently Asked Questions About Teaching and AI,FAQ/Resource Page,2/20/2025,https://www.nyu.edu/faculty/teaching-and-learning-resources/teaching-with-generative-tools/frequently-asked-questions.html,Functional,Recommended,Instructor decides,Pedagogy/Learning,Academic Integrity,Guidance only,Faculty only,"""Generative AI is a new arrival in the academic environment and can be used in a wide variety of ways. Because of this novelty and flexibility, there are few standard approaches to its use beyond an Faculty/Inst. decides restriction on taking credit for AI output without acknowledging its use. Most policies will be set by the schools or by individual faculty members.""",,EY,,2,3,Internal
+NYC-015,Institutional,NYC,New York University,NYU,NYU AI Center of Excellence,FAQ/Resource Page,,https://www.nyu.edu/life/information-technology/artificial-intelligence-at-nyu/coe.html,Encouraging,Not specified,Institution-mandated,AI Literacy,Pedagogy/Learning,Guidance only,Whole community,"“New York University is strategically investing in AI to gain significant administrative efficiencies, accelerate cutting-edge research, and equip our entire community—faculty, students, and staff—with the tools to thrive in an AI-driven world.”",,EY,,3,3,Internal
+NYC-016,Institutional,NYC,City University of New York,CUNY,CUNY AI Academic Hub,University Policy,2025,https://www.cuny.edu/academics/ai-academic-hub/,Encouraging,Not specified,Not specified,AI Literacy,Professional Readiness,Guidance only,Students and Faculty,"""Our Vision is shaping the Future of Human-AI Powered Education. CUNY is at the forefront of AI-driven transformation in higher education. Our mission is to harness AI’s potential to empower learning, drive research, and foster innovation—ensuring equitable opportunities for all.""",,EY,,3,3,Internal
+NYC-017,Institutional,NYC,City University of New York,CUNY,Teach@CUNY AI Toolkit,FAQ/Resource Page,,https://aitoolkit.commons.gc.cuny.edu/,Cautious,Recommended,Instructor decides,AI Literacy,Pedagogy/Learning,Guidance only,Students and Faculty,“This toolkit offers guidelines and resources to help instructors support students as we all learn to navigate a world increasingly awash in AI.”,,EY,,1,3,Internal
+NYC-018,Institutional,NYC,City University of New York,CUNY,CUNY Central Academic Integrity Policy,University Policy,2024,https://www.cuny.edu/about/administration/offices/legal-affairs/policies-resources/academic-integrity-policy/,Cautious,Required,Hybrid,Academic Integrity,AI Literacy,Explicit penalties,Students and Faculty,“Any use of generative AI tools must be in line with the usage policy for specific assignments as defined in the course of the syllabus and/or communicated by the course instructor.”,,EY,,1,3,Internal
+NYC-019,Institutional,NYC,City University of New York,CUNY,AI Across CUNY,FAQ/Resource Page,9/30/2025,https://www.ccny.cuny.edu/tlc/making-your-course-available?srsltid=AfmBOoojIHHL2OxDCdrK-0Xc9elMyrAnNWVcOtEzwybtMdTvH4Pbcfy-,Encouraging,Required,Instructor decides,AI Literacy,Pedagogy/Learning,None stated,Students and Faculty,“The Teaching and Learning Center developed this resource to help faculty explore the intersection of AI and education.”,,EY,,3,3,Internal
+NYC-020,Institutional,NYC,City University of New York | CUNY Central Office / CUNY Innovative Teaching Academy,CUNY,Teaching with AI: Disciplinary Toolkits,FAQ/Resource Page,2024-2025,https://www.cuny.edu/academics/faculty-affairs/faculty-hub/cuny-innovative-teaching-academy/building-bridges-of-knowledge-bbk/#1743443301057-e01b194c-474d,Encouraging,Not specified,Instructor decides,AI Literacy,Professional Readiness,None stated,Students and Faculty,"“Building Bridge of Knowledge (BBK) is a CUNY-wide faculty fellowship project, aiming to help students use generative artificial intelligence (AI) tools ethically, responsibly, and effectively.”",,EY,,3,3,Internal
+NYC-021,Institutional,NYC,Columbia University / Office of the Provost,Columbia University,Office of the Provost: Generative AI Policy & Guidance (2024-2026),University Policy,,https://provost.columbia.edu/content/generative-ai,Cautious,Required,Hybrid,Privacy/Data/Ethics,Academic Integrity,Referenced to integrity code,Whole community,"“Columbia recognizes that generative AI is a tool that is transforming higher education and society, and encourages our campus community to explore its possibilities while being mindful of the potential security and privacy risks that it poses.”",,EY,,1,3,Internal
+NYC-022,Institutional,NYC,Columbia University Information Technology / Emerging Technologies,Columbia University,Best Practices for Responsible AI Use,University Policy,1/9/2026,https://etc.cuit.columbia.edu/news/best-practices-responsible-ai-use,Cautious,Required,Hybrid,Privacy/Data/Ethics,AI Literacy,Referenced to integrity code,Whole community,"CUIT’s guidance is designed to help the Columbia community benefit from AI while avoiding common failure points, particularly when institutional or sensitive data is involved.
+
+At the center of the guidance is one principle:
+AI should assist human judgment, not replace i",,EY,,1,3,Internal
+NYC-023,Institutional,NYC,Columbia University,Columbia University,Columbia CTL AI Guidelines (2024-2026),University Policy,,https://ctl.columbia.edu/resources-and-technology/resources/academic-integrity/,Cautious,Required,Instructor decides,Academic Integrity,AI Literacy,Referenced to integrity code,Students and Faculty,“The possible advantages that might present in the teaching-learning process should be under the control of each instructor since they know exactly what they expect from students’ work.”,,EY,,1,3,Internal
+NYC-024,Institutional,NYC,Columbia University,Columbia University,CUIT AI Framework Policy,FAQ/Resource Page,6/10/2025,https://www.cuit.columbia.edu/sites/www.cuit.columbia.edu/files/content/CUIT%20Website%20Pages/AI%20Framework%20%20(1).pdf,Encouraging,Recommended,Institution-mandated,Privacy/Data/Ethics,,Guidance only,Whole community,"“A key tenet of the framework is governance — ensuring that all AI initiatives adhere to security, privacy, and compliance requirements from the outset.”",,EY,,3,3,Internal
+NYC-025,Institutional,NYC,Columbia University,Columbia University,CUIT Generative AI Data Security Guidelines,University Policy,,https://www.cuit.columbia.edu/content/ai-services,Encouraging,Not specified,Institution-mandated,AI Literacy,,Guidance only,Whole community,"“For work involving non-public data, Columbia IT maintains a set of enterprise-grade AI tools — including Columbia ChatGPT Education, CHAT, and Google for Education — that operate within a secured environment sometimes called a ‘walled garden.’”",,EY,,3,3,Internal
+NYC-026,Faculty/Department,NYC,New York University - Steinhardt,NYU,NYU Steinhardt - Academic Integrity and Syllabus Support in the Age of Generative AI,FAQ/Resource Page,,https://steinhardt.nyu.edu/faculty-and-staff/academic-affairs/steinhardt-ai-hub/academic-integrity-and-syllabus-support-age,Cautious,Required,Faculty/Dept decides,AI Literacy,Pedagogy/Learning,Referenced to integrity code,Faculty only,“Any AI-generated content used in assignments must be properly attributed.”,,EY,05/15,1,4,Internal
+NYC-027,Faculty/Department,NYC,New York University - CAS,NYU,CAS - Expository Writing Program (EWP) Statement on AI (2026),University Policy,11/1/2025,https://cas.nyu.edu/ewp/about/statement-on-generative-ai.html,Prohibitive,Conditional,Hybrid,Pedagogy/Learning,Academic Integrity,Guidance only,Students and Faculty,No EWP class permits students to use AI-generated writing unless it is clearly identified as an object for analysis,,EY,05/15,0,4,Internal
+NYC-028,Faculty/Department,NYC,New York University,NYU,Academic Integrity - Tisch,University Policy,,https://tisch.nyu.edu/faculty/academic-integ,Cautious,Not specified,Instructor decides,Academic Integrity,Pedagogy/Learning,Explicit penalties,Students and Faculty,"Generative AI: Please note, with recent developments in technologies like ChatGPT, the existence of a well-written paragraph is no longer evidence of human effort. To read the Provost's notes on how to adapt writing assignments in the age of generative AI, click here. ",,EY,05/15,1,4,Internal
+NYC-029,Faculty/Department,NYC,New York University,NYU,Generative AI Updates – Live Syllabus and Faculty Development Resources,FAQ/Resource Page,1/23/2024,https://wp.nyu.edu/fas-edtech/2024/01/generative-ai-updates-live-syllabus-and-faculty-development-resources/,Cautious,Recommended,Instructor decides,Pedagogy/Learning,Academic Integrity,Guidance only,Faculty only,"“Whatever your approach, clear communication with students about your expectations and your justification for your generative AI use policies should be on your beginning of the semester agenda.”",,EY,05/15,1,4,Internal
+NYC-030,Faculty/Department,NYC,New York University,NYU,Generative AI Resources for Faculty - NYU Arts and Sciences,FAQ/Resource Page,,https://as.nyu.edu/academics/teaching-excellence-and-innovation/services/course-support/genai-resources.html,Cautious,Not specified,Instructor decides,AI Literacy,Academic Integrity,Guidance only,Faculty only,“The materials on this page are a regularly updated collection of the advice and resources our team shares with instructors and departments about AI and teaching and learning.”,,EY,05/15,1,4,Internal
+NYC-031,Faculty/Department,NYC,CUNY - Baruch College,CUNY,Guidelines for AI Use at Baruch College,Official Guidance,2025-08-19,https://provost.baruch.cuny.edu/artificial-intelligence-think-tank/ai-use-guidance/,Encouraging,Required,Instructor decides,Pedagogy/Learning,Privacy/Data/Ethics,Referenced to integrity code,Students and Faculty,"""Faculty are encouraged to integrate artificial intelligence education into their courses as appropriate to their disciplines, but are not obligated to do so. All syllabi should include a course- and discipline-appropriate policy on the use of generative AI.""",,EY,05/15,3,4,Internal
+NYC-032,Faculty/Department,NYC,CUNY - John Jay College of Criminal Justice,CUNY,AI Responsible Use Guidelines,Official Guidance,,https://www.jjay.cuny.edu/about/senior-leadership/academic-affairs/office-provost/ai-policies-guidelines,Functional,Required,Institution-mandated,Academic Integrity,AI Literacy,Referenced to integrity code,Whole community,"Generative AI is a powerful tool for research and scholarship, and its effective use is becoming an essential workplace skill. We believe that fostering AI literacy across all disciplines is an extension of our mission to prepare students for meaningful careers and ethical leadership within the justice system and beyond.
+","There are 3 documents, For Everyone, For Student and For Faculty. All of them were considered in this coding",EY,05/15,2,4,Internal
+NYC-033,Faculty/Department,NYC,CUNY - LaGuardia,CUNY,"Teaching Writing at LaGuardia Generative AI Guidance.
+",Official Guidance,,https://lagccwriting.commons.gc.cuny.edu/gen-ai-guidance/,Functional,Recommended,Instructor decides,Pedagogy/Learning,Academic Integrity,Referenced to integrity code,Students and Faculty,"Please include a statement on your syllabus which indicates your policy about student use of AI in your class. Please also verbally reinforce this policy with students throughout the semester.
+Right now, the Department does not have a uniform policy. To help you decide on your policy, here are some guiding resources:",,EY,05/15,2,4,Internal
+NYC-034,Faculty/Department,NYC,CUNY - City Tech,CUNY,City Tech Artificial Intelligence Guidance,Official Guidance,,https://www.citytech.cuny.edu/ai/ai-guidance.aspx,Cautious,Required,Hybrid,Privacy/Data/Ethics,Academic Integrity,Referenced to integrity code,Whole community,"City Tech recognizes the rapid evolution of Artificial Intelligence (AI) and its impact on how we work, teach and learn. As the landscape of AI changes, and Generative AI tools become widely available for everyday use, new opportunities in higher education are realized, but also present new risks that must be taken into consideration when using these technologies. We encourage you to experiment with AI tools, but also consider the following guidelines which align with existing CUNY and City Tech policies on information security and academic integrity. Please consider the guidelines in conjunction with other CUNY recommendations and policies.","There are 3 documents, For Everyone, For Student and For Faculty. All of them were considered in this coding",EY,05/15,1,4,Internal
+NYC-035,Faculty/Department,NYC,CUNY - Queens College,CUNY,"Generative AI in the Classroom: Best Practices, a CETLL Guide",FAQ/Resource Page,2025-03,https://www.qc.cuny.edu/cetll/wp-content/uploads/sites/138/2026/03/Generative-AI-in-the-Classroom-Best-Practices-a-CETLL-Guide_ACCESSIBLE_3.19.pdf,Functional,Recommended,Instructor decides,Pedagogy/Learning,AI Literacy,Guidance only,Faculty only,"Currently, there is no specific CUNY or QC policy on the use of artificial intelligence in the classroom outside of mentions of AI in the CUNY Academic Integrity Policy. This means that, as instructors, we have a lot of flexibility and responsibility to consider how and when the use of generative AI is acceptable in our classes to clearly communicate these parameters to our students as we prepare them for the integration of these technologies in work and life. ",,EY,05/15,2,4,Internal
+NYC-036,Faculty/Department,NYC,"Teachers College, Columbia University",Columbia,TC Guidance - Developing a Generative AI Policy for Your Course,FAQ/Resource Page,2025,https://www.tc.columbia.edu/digitalfuturesinstitute/ai-in-education/recommendations-for-generative-ai-use-at-tc/,Functional,Conditional,Instructor decides,Pedagogy/Learning,Academic Integrity,Referenced to integrity code,Students and Faculty,"""TC provides flexibility for instructors to experiment with and use generative AI in their courses. Each TC instructor should set specific policies about student use of generative AI for their course assignments""",,EY,05/14,2,4,Internal
+NYC-037,Faculty/Department,NYC,Columbia Law School,Columbia,Columbia Law School Interim Policy on Generative AI,University Policy,,https://www.law.columbia.edu/academics/registration-services/resources/columbia-law-school-interim-policy-generative-ai,Cautious,Not specified,Hybrid,Academic Integrity,AI Literacy,Referenced to integrity code,Students and Faculty,"Generative AI includes any machine-based tool designed to help write, rewrite, or restructure language from user questions and prompts. Prohibited tools include, for example, Bard, ChatGPT, Gemini, Grok, along with embedded tools in programs such as Grammarly or Microsoft Copilot. Generative AI is distinct from software that helps search for and extract information from data sources for use in research. (...) 
+Use of Generative AI is prohibited in (a) any exam or final paper or (b) for aid in drafting any part of work submitted for credit, even if the use is fully documented. 
+The Law School and University Generative AI policies are default rules. This means individual instructors can, and indeed are encouraged to, tailor their own more permissive policies, so long as their policies are stated in writing in the syllabus.
+
+",,EY,05/14,1,4,Internal
+NYC-038,Faculty/Department,NYC,Columbia Business School,Columbia,"Columbia Business School - Getting Started with Generative Artificial Intelligence
+",University Policy,,https://business.columbia.edu/samberg/ai/ai-basics,Encouraging,Required,Institution-mandated,AI Literacy,Privacy/Data/Ethics,None stated,Whole community,"“Generative AI is a powerful tool capable of creating innovative solutions, automating repetitive tasks, and enhancing productivity.”",,EY,05/14,3,4,Internal
+NYC-039,Faculty/Department,NYC,Center for Teaching and Learning (CTL),Columbia,"Center for Teaching and Learning (CTL) - Developing AI Syllabus Statements and Communicating with Students about AI
+",University Policy,,https://ai.ctl.columbia.edu/explore/ai-syllabus-statement/,Functional,Required,Hybrid,Pedagogy/Learning,Academic Integrity,Referenced to integrity code,Students and Faculty,"“Since instructors and academic departments have the ability to develop their own AI course policies, students may encounter different guidelines across their courses.”",,EY,05/14,2,4,Internal
+NYC-040,Faculty/Department,NYC,Columbia University Irving Medical Center,Columbia,AI and Generative Technology Use at CUIMC,University Policy,,https://www.it.cuimc.columbia.edu/ai-and-generative-technology-use-cuimc,Cautious,Required,Institution-mandated,Privacy/Data/Ethics,AI Literacy,Guidance only,Whole community,"“All use of AI, Large Language Models (LLM), Natural Language processors (NLP) or Machine Learning (ML) systems at the Medical Center must comply with HIPAA and other relevant healthcare and IT regulations.”",,EY,05/14,1,4,Internal
+NYC-041,Course-wide,NYC,NYU Stern,NYU,Global Strategy (Stern School of Business) Global Strategy Syllabus,Syllabus,Fall 2025,https://web-apps-shib.stern.nyu.edu/syllabi/static/syllabusfiles/MGMT-GB.2340_10_F2025.pdf,Prohibitive,Required,Instructor decides,Academic Integrity,Pedagogy/Learning,Explicit penalties,Students only,"In this course, students are not allowed to use advanced automated tools (artificial intelligence or machine learning tools) on any component of this course. (...) When you are doing research for your final project, please make sure you use credible resources that are not generated by AI. If any part of your assignment(s) are produced by AI, I will ask you to redo that section or the assignment. I will not grade or provide feedback on an AI generated text. ",,EY,05/14,0,5,Internal
+NYC-042,Course-wide,NYC,NYU Stern,NYU,Leadership (Stern School of Business - FT MBA) Leadership MBA Syllabus,Syllabus,Fall 2025,https://web-apps-shib.stern.nyu.edu/syllabi/static/syllabusfiles/COR1-GB.1102_02_F2025.pdf,Prohibitive,Not specified,Instructor decides,Academic Integrity,Pedagogy/Learning,Referenced to integrity code,Students only,"You can only learn from work you actually do. Unless otherwise stated, you should not use generative AI tools to create any part of an assignment in this course; every submission should be entirely your work.",,EY,05/14,0,5,Internal
+NYC-043,Course-wide,NYC,NYU College of Arts & Sciences,NYU,Texts and Ideas: CORE-UA 400 070 (College of Arts & Science) Texts and Ideas Syllabus,Syllabus,2025,https://cas.nyu.edu/content/dam/nyu-as/casCore/documents/syllabifall2025/BARBIERO%20SYLLABUS%202025%20-%20Copy%20%281%29.pdf,Prohibitive,Not specified,Instructor decides,Pedagogy/Learning,Academic Integrity,Referenced to integrity code,Students only,"As with any other class work generated by anyone other than the students, whether by other students or by a company, use of AI in this class, unless specifically permitted, will be considered a violation of NYU’s Academic Integrity policy and will be dealt with accordingly.",,EY,05/14,0,5,Internal
+NYC-044,Course-wide,NYC,NYU College of Arts & Sciences,NYU,Environmental Justice & Inequality ,Syllabus,Spring 2025,https://as.nyu.edu/content/dam/nyu-as/environment/documents/Syllabi/spring-2025/Environmental%20Justice%20syllabus%202025%20-%20Colin%20Jerolmack.pdf,Prohibitive,Required,Institution-mandated,Academic Integrity,Pedagogy/Learning,Explicit penalties,Students only,"“Presenting writing or data generated by someone else, or by software/Artificial Intelligence, as one’s own is a serious offense.”",,EY,05/14,0,5,Internal
+NYC-045,Course-wide,NYC,NYU College of Arts & Sciences,NYU,Writing Program Course Syllabus (College of Arts & Science) FAS Writing Syllabus: “Language as a Site of Protest: Poetry & Prose of the Political Imagination”,Syllabus,Fall 2025,"https://as.nyu.edu/content/dam/nyu-as/cwp/documents/introsyllabi/fall2025syllabi/NYU%20Syllabus,%20Fall%202025%20-%20GDC-9.pdf",Prohibitive,Not specified,Instructor decides,Academic Integrity,Pedagogy/Learning,Explicit penalties,Students only,"“Plagiarism will be reported to the department, without exception. This includes the use of AI.”",,EY,05/14,0,5,Internal
+NYC-046,Course-wide,NYC,CUNY - Lemann College,CUNY,English 111: Composition I Course Syllabus,Syllabus,2025,https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=1112&context=le_oers,Prohibitive,Not specified,Instructor decides,Academic Integrity,Pedagogy/Learning,Referenced to integrity code,Students only,"While AI and Chat GPT is the future, it is not a valid resource for this class. As we will discuss, any time you are creating an assignment it must be in your own words. 
+The use of AI, ChatGPT, etc. presenting as your own work that you yourself have not written will be considered plagiarism",,EY,05/14,0,5,Internal
+NYC-047,Course-wide,NYC,CUNY - City College ,CUNY,MCA 10100: Introduction to Mass Media OER/ZTC Syllabus,Syllabus,2025,https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=1583&context=cc_oers,Functional,Not specified,Instructor decides,Academic Integrity,Pedagogy/Learning,Referenced to integrity code,Students only,"As such, while using some programs of sites with AI features to do simple things like correct grammar or edit work is permissible, using generative AI programs like ChatGPT to write assignments for yourself will be considered an act of turning in work that is not your own and violate academic honesty guidelines.",,EY,05/14,2,5,Internal
+NYC-048,Course-wide,NYC,CUNY - York College ,CUNY,"Digital Cultures, DEI, and AI: Critical Analysis Assignment & Curriculum",Syllabus,2026,https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=1094&context=jj_oers,Functional,Required,Instructor decides,AI Literacy,Academic Integrity,Guidance only,Students only,"Students may use AI tools only for: brainstorming, outlining, or organizing ideas.
+AI tools may not replace original thinking or writing.
+If AI is used, students must include a brief AI Use Disclosure Statement explaining: which tool was used,  how it was used, and how authorship decisions remained human-directed",,EY,05/14,2,5,Internal
+NYC-049,Course-wide,NYC,CUNY - Queens College,CUNY,"Queens College — FNES 722 (Exercise, Energy Balance, and Body Composition)",Syllabus,2025,https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=1117&context=qc_oers,Cautious,Required,Instructor decides,Academic Integrity,AI Literacy,Explicit penalties,Students only,"Cheating is the unauthorized use or attempted use of material, information, notes, study aids, devices, artificial intelligence (AI) systems, or communication during an academic exercise and will result in a grade of a “0” on the assignment and may result in disciplinary action from the department/University.",,EY,05/14,1,5,Internal
+NYC-050,Course-wide,NYC,CUNY - Baruch College,CUNY,Baruch College — ENV 3070 (Agroecology),Syllabus,2025,https://academicworks.cuny.edu/cgi/viewcontent.cgi?article=1129&context=bb_oers,Encouraging,Required,Instructor decides,Academic Integrity,,Referenced to integrity code,Students only,"Use of generative AI tools (e.g. ChatGPT) is allowed. For each written assignment where generative AI is employed, you must include a cover letter describing what tool(s) you used, how you used it, why it was useful, and any shortcomings or limitations you encountered",,EY,05/14,3,5,Internal
+NYC-051,Course-wide,NYC,Columbia University,Columbia,PSYC UN 3620: Developmental Psychopathology,Syllabus,Fall 2024,https://psychology.columbia.edu/sites/psychology.columbia.edu/files/content/PSYC%203620%20Syllabus%20Fall2024.pdf,Functional,Required,Instructor decides,Academic Integrity,Pedagogy/Learning,Referenced to integrity code,Students only,"While you are welcome to use generative AI tools in this class when doing so aligns with the
+course objectives, please be advised of the following (...)
+Remember, AI is not likely to generate a response that would be seen as quality work, and
+should be modified, personalized, and always properly cited.",,EY,05/14,2,5,Internal
+NYC-052,Course-wide,NYC,Columbia University,Columbia,COMS 3261: Computer Science Theory,Syllabus,Spring 2025,https://www.cs.columbia.edu/~josh/cs-theory/,Prohibitive,Not specified,Instructor decides,Pedagogy/Learning,,None stated,Students only,"It is also prohibited to use generative AI tools like ChatGPT while working on homeworks. (Even if it were not prohibited, these tools typically give incorrect and confusing solutions to the types of problems we will see in this class. In fact, in this class, we will give a mathematical explanation for this phenomenon!)",,EY,05/14,0,5,Internal
+NYC-053,Course-wide,NYC,Columbia University,Columbia,NSBV BC3392: Psychobiology of Stress,Syllabus,Fall 2024 ,https://psychology.columbia.edu/sites/psychology.columbia.edu/files/content/Syllabus%20Psychobiology%20of%20Stress%20FA24.pdf,Prohibitive,Not specified,Instructor decides,Pedagogy/Learning,Academic Integrity,None stated,Students only,"Submitting work that is generated by AI is not acceptable. There are no shortcuts when it comes to learning how
+to write about and present your own research. Instead, you are expected to put in the time and effort required to
+create your own work, which will not only demonstrate your understanding of your research topic, but also your
+ability to think critically and creatively. Students are expected to take responsibility for their work to ensure that
+it is original and well-researched.",,EY,05/14,0,5,Internal
+NYC-054,Course-wide,NYC,Columbia University,Columbia,PSYC UN 2235: Thinking and Decision Making,Syllabus,Spring 2024,https://psychology.columbia.edu/sites/psychology.columbia.edu/files/content/UN2235%20Syllabus%20for%20Spring%202024%20KFG.pdf,Functional,Not specified,Instructor decides,Pedagogy/Learning,Academic Integrity,Referenced to integrity code,Students only,"Generative AI tools like ChatGPT and Bard can do a lot of heavy lifting in academic contexts. Such tools aren’t inherently good or bad—it’s all up to how you use them. 
+Ultimately, the ideas and words you share in class and in your written work for this course should all be your own. 
+In presentations, although you’re welcome to seek AI help in the aesthetics of your slides, the words presented in them should be your own. 
+And in your policy paper and final papers, it’s fine to get AI help with editing, but the ideas on the page need to have been produced by you alone",,EY,05/14,2,5,Internal
+NYC-055,Course-wide,NYC,Columbia University,Columbia,COMS 4705: Natural Language Processing,Syllabus,Spring 2024,https://www.cs.columbia.edu/~johnhew/coms4705/index.html,Functional,Not specified,Instructor decides,Pedagogy/Learning,Academic Integrity,None stated,Students only,"AI tools (e.g., ChatGPT, Cursor, Claude Code) are fully allowed for Assignments 1–4. While I recommend doing the assignments on your own (or with minimal AI hints) as prep for exams, you may use AI to fully solve them if you wish. 
+It is your responsibility to ensure that submitted code and math are correct.",,EY,05/14,2,5,Internal
+HK-001,National/Federal,Hong Kong,,,MOE sets 2026 priorities for digital education,Official Guidance,4/1/2026,http://en.moe.gov.cn/news/press_releases/202604/t20260406_1432962.html,Encouraging,Not specified,Gov-mandated,Professional Readiness,Pedagogy/Learning,Guidance only,Whole community,"The MOE convened a meeting on March 31 to outline priorities for the next phase of the country’s digital education strategy, with a focus on integrating artificial intelligence (AI) across teaching, learning and educational management.
+
+Looking ahead, the meeting called for more systematic integration of AI across different areas of education. In schools, the focus will be on supporting personalized learning and equipping students with interdisciplinary skills relevant to emerging industries. In the field of lifelong learning, the meeting emphasized expanding digital platforms to better connect education with industry and society, with a view to improving the employability of graduates and supporting continuous skill development.","This is an official press release article. It is included here because there is no equivalent ""original text"" available.
+
+We cannot say this 2026 March 31 meeting had any effect on the HK institutions just yet (too recent). But we can see the alignment across different Tiers.
+""Industry"" seems to be very important in their framework.",YM,,3,1,External
+HK-002,National/Federal,Hong Kong,,,Ten major reforms shaping China’s education landscape in 2025,Official Guidance,12/31/2025,http://en.moe.gov.cn/news/press_releases/202601/t20260120_1427027.html,Encouraging,Not specified,Gov-mandated,Professional Readiness,,Guidance only,Whole community,"[Three of the ten ""reform themes"" mentioned AI]
+
+3. Rebalancing university disciplines and degree programs - ""New programs have been introduced in areas such as artificial intelligence...""
+5. Training elite engineers for industries of strategic importance - ""In fields such as semiconductors and artificial intelligence, universities and companies jointly recruit students, design curricula, supervise research, and share outcomes.""
+8. Expanding access to quality undergraduate education - ""New places are concentrated in strategic fields such as artificial intelligence...""","This is an official press release article. It is included here because there is no equivalent ""original text"" available.
+It summarizes the reform themes observed after MOE's ""three-year action plan"" and ""a series of targeted reforms"".
+
+AI is one of the country's major ""Strategic fields"".",YM,,3,1,External
+HK-003,National/Federal,Hong Kong,,,教育部等五部门关于印发《“人工智能+教育”行动计划》的通知,Official Guidance,4/10/2026,https://www.nda.gov.cn/sjj/zwgk/zcfb/0413/20260410162428109058250_pc.html,Encouraging,Not specified,Gov-mandated,Professional Readiness,AI Literacy,Guidance only,Whole community,"（二）培育面向智能时代的高层次人才。推动人工智能成为高校公共基础课，按学科专业分类编写课程教材，推动全体学生掌握人工智能知识。根据人工智能技术特点，打造“短实新”的前沿创新课程。优化传统学科专业人才培养方案，指导高校开设人工智能交叉融合课程，丰富跨学科、跨专业课程群，培养复合型交叉人才。根据产业结构智能升级优化调整学科专业设置，新设一批适应新技术、新产业、新业态的学科专业。整合高水平研究型大学、科技领军企业、国家实验室等力量，深化学科交叉、产教融合、科教融汇，探索人工智能拔尖创新人才培养新模式。
+(Google translate (verified): (II) Promote the integration of artificial intelligence (AI) as a core general education course within higher education institutions, developing specialized textbooks tailored to specific academic disciplines and majors to ensure that all students acquire a foundational understanding of AI. Drawing upon the unique characteristics of AI technology, develop cutting-edge, innovative courses that are concise, practical, and forward-looking. Optimize talent cultivation plans for traditional academic disciplines; guide universities in establishing interdisciplinary AI courses; enrich the array of cross-disciplinary and cross-major course clusters; and cultivate versatile, interdisciplinary talent. Adjust and optimize academic discipline and major offerings in alignment with the intelligent upgrading of industrial structures, establishing a new cohort of disciplines and majors designed to meet the demands of emerging technologies, industries, and business models. Integrate the resources of high-level research universities, leading technology enterprises, and national laboratories to deepen interdisciplinary convergence, industry-education integration, and science-education synergy, thereby exploring new models for cultivating top-tier, innovative talent in the field of artificial intelligence.)","References two other documents (including HK-004):
+""根据《教育强国建设规划纲要（2024—2035年）》战略部署，按照《国务院关于深入实施“人工智能+”行动的意见》的要求，制定本计划。""
+
+For details, search for 高校 (= Higher Education Institutions) in the main text.
+Note that HK Inst. strictly speaking are not governed by these guidelines.",YM,,3,1,External
+HK-004,National/Federal,Hong Kong,,,国务院关于深入实施“人工智能+”行动的意见,Official Guidance,7/13/2023,https://www.mee.gov.cn/zcwj/gwywj/202508/t20250827_1126207.shtml,Encouraging,Not specified,Gov-mandated,Pedagogy/Learning,AI Literacy,Guidance only,Whole community,"""推行更富成效的学习方式。把人工智能融入教育教学全要素、全过程，创新智能学伴、智能教师等人机协同教育教学新模式，推动育人从知识传授为重向能力提升为本转变，加快实现大规模因材施教，提高教育质量，促进教育公平。构建智能化情景交互学习模式，推动开展方式更灵活、资源更丰富的自主学习。鼓励和支持全民积极学习人工智能新知识、新技术。
+(Promote more effective learning methods. Integrate artificial intelligence into every element and stage of education and instruction; pioneer new human-machine collaborative models—such as intelligent learning companions and AI teachers—to drive a shift in pedagogy from a primary focus on knowledge transmission to one centered on capability enhancement; accelerate the realization of personalized instruction on a large scale; improve educational quality; and foster educational equity. Establish intelligent, context-aware interactive learning models to facilitate self-directed learning characterized by greater flexibility and richer resources. Encourage and support the entire populace in actively acquiring new knowledge and technologies related to artificial intelligence.)""","Referenced by HK-003.
+
+This is the first document in the list that takes Learning as the main focus (rather than Industry needs).",YM,,3,1,External
+HK-005,National/Federal,Hong Kong,,,Global AI Governance Action Plan,Official Guidance,7/26/2025,https://hk.ocmfa.gov.cn/eng/xjpzxzywshd/202507/t20250729_11679232.htm,Encouraging,Not specified,Gov-mandated,Privacy/Data/Ethics,Equity,Guidance only,Whole community,"To this end, we hereby put forward the Global AI Governance Action Plan, calling on all parties to take concrete and effective actions in advancing global AI development and governance based on the objectives and principles of promoting AI for good and in service of humanity, respecting national sovereignty, aligning with development goals, ensuring safety and controllability, upholding fairness and inclusiveness, and fostering open cooperation.
+
+""Education"" was mentioned under:
+3. Advancing AI empowerment across industries.
+9.Spearheading deployment and application by the public sector.
+12.Strengthening international cooperation on AI capacity building.","Another press release, which seems to be the only reference for this Action Plan? Mentions ""AI+"" (HK-004).",YM,,3,1,External
+HK-006,City/Territory,Hong Kong,,,The Chief Executives 2025 Policy Address Supplement,Executive Order,9/17/2025,https://www.policyaddress.gov.hk/2025/public/pdf/supplement/supplement-full_en.pdf,Encouraging,Not specified,Gov-mandated,Pedagogy/Learning,AI Literacy,Guidance only,Whole community,"Promote digital education
+Collaborate with professional bodies to launch
+pilot schemes to promote AI education,
+including enhancement of professional
+training for teachers and strengthening the
+application of Generative AI in learning and
+teaching. (EDB)",Grand direction,,,3,2,External
+HK-007,City/Territory,Hong Kong,,,The Chief Executive's 2024 Policy Address Education Bureau’s Policy Initiatives,Executive Order,11/1/2024,https://www.edb.gov.hk/en/about-edb/legco/policy-address/2024_Panel_on_Education_Eng.pdf,Encouraging,Not specified,Gov-mandated,Pedagogy/Learning,AI Literacy,Guidance only,Whole community,"Setting up the Steering Committee on Strategic Development of Digital Education
+16. To dovetail with the national development of digital education and to nurture talents for the innovation and technology (I&T) sector, the Government will continue to step up the promotion of STEAM education in primary and secondary schools, and enhance information technology in education to facilitate the deep integration of I&T, including artificial intelligence (AI), in education. We will set up the Steering Committee on Strategic Development of Digital Education in this school year to tender advice and suggestions on promoting digital education.
+
+[p.20] Under ""Proposal on Launching the Research Matching Grant Scheme"": mentioned ""artificial intelligence""
+the Government proposes to launch the Scheme again in 2025 with $1.5 billion of matching grants to encourage the higher education sector to expand their research funding sources, and bolster support for the institutions’ academic research endeavours. The Scheme will cover four years from mid-2025 to mid-2029","Grand direction
+
+FIrst quote mostly directed to Primary and Secondary schools
+
+Money is spent",,,3,2,External
+HK-008,City/Territory,Hong Kong,,,Hong Kong Generative Artificial Intelligence Technical and Application Guideline,Official Guidance,12/1/2025,https://www.digitalpolicy.gov.hk/en/our_work/data_governance/policies_standards/ethical_ai_framework/doc/HK_Generative_AI_Technical_and_Application_Guideline_en.pdf,Encouraging,Recommended,Gov-mandated,Privacy/Data/Ethics,Equity,Guidance only,Whole community,"Content Safety is a critical issue for generative AI services.Fabrication of Rumours refers to the challenge wherein generative AI services can produce highly convincing text, images, audio, video, and other multimedia content.
+
+education technology (EdTech) sector should ensure equitable access, preventing learning outcomes from being affected by algorithmic bias.
+
+Education: The education sector should regulate the use and scope of generative AI rather than outright banning students from using it. However, students should obtain teacher approval before using AI in their coursework, and AI-generated content should be clearly identifiable to prevent misuse that violates academic integrity. When teachers use generative AI in teaching, they must ensure that the generated content is truthful, accurate, and consistent in both textual and visual representation. If AI is used for grading assignments and exams, final results should always be reviewed by human educators.
+",Their primary concern is the quality of the content and the threat it poses to society. This is very much within the realm of AI ethics,,,3,2,External
+HK-009,City/Territory,Hong Kong,,,Ethical Artificial Intelligence Framework,Official Guidance,12/1/2025,https://www.digitalpolicy.gov.hk/en/our_work/data_governance/policies_standards/ethical_ai_framework/doc/Ethical_AI_Framework_en.pdf,Encouraging,Recommended,Gov-mandated,Privacy/Data/Ethics,Equity,Guidance only,Whole community,"balance AI innovation and development, application and responsibility, thereby constructing a governance framework with local characteristics that is suitable for Hong Kong's context
+
+Organisations can make use of the Ethical AI Framework when adopting AI and big data analytics
+in their IT projects or services. Ethical AI Framework is defined not only to serve as a
+reference/guide for the IT project team during the development and maintenance process. It also
+defines the governance structure to enable organisations to demonstrate accountability in building
+trust upon adoption of AI by evaluating the impact, ensuring safe and responsible use of AI and
+facilitating innovation.
+","HongKong gov is basically saying: they have a good ai guidelines, please follow them, but they are not making them",,,3,2,External
+HK-010,City/Territory,Hong Kong,,,Fund for Innovative Technology-in-Education,Official Guidance,11/17/2025,https://www.ugc.edu.hk/eng/ugc/activity/teach_learn/fite.html,Encouraging,Not specified,Gov-mandated,Pedagogy/Learning,AI Literacy,Guidance only,Whole community,"The UGC announced the launch of the Fund for Innovative Technology-in-Education (FITE) with a funding allocation of $100 million in June 2023 for 2023/24 – 2025/26 academic years, with $20 million earmarked for inter-institutional collaborative activities between institutions. The FITE aims to provide an impetus for universities to harness innovative and breakthrough technologies in transforming pedagogies and enriching student learning experiences, and to nurture a digitally competent and technologically responsible generation, for the future success of their students in the digital economy.",$,YM,,3,2,External
+HK-011,Institutional,Hong Kong,,HKU,Academic Integrity and University-wide Core Principles for Using AI in Teaching and Assessment,Official Guidance,2026,https://talic.hku.hk/innovation/ai-ethics/core-principles/,Cautious,Required,Hybrid,Academic Integrity,Privacy/Data/Ethics,Referenced to integrity code,Students and Faculty,"Staff and students are reminded that the HKU regulations and policies regarding plagiarism and academic mis-conduct supersede all other regulations, where there is a conflict, these regulations and policies take precedence. ANY misuse of AI or misrepresentation of AI work as one’s own independent creative work violates the HKU regulations as well as generally accepted principles of community, integrity and honor. Violations will be referred to the university disciplinary committee. Staff are reminded to draw students’ attention to this. With the advent of more sophisticated AI tools, it is essential that staff clearly explain to students the purpose of each assignment and/or assessment, and how this purpose has influenced their decisions about the extent to which use of AI is allowed/restricted
+
+instructors can decide how they wish to integrate AI in their academic practice; nonetheless, the core principles below provide guidance on current “best use”.","Core principles
+
+School will provide a general guideline and faculty can lead their own rules on their own",,,1,3,Internal
+HK-012,Institutional,Hong Kong,,HKU,Policy for AI in Education,Official Guidance,?,https://aied.talic.hku.hk/aipolicy/,Encouraging,Recommended,Hybrid,Equity,Privacy/Data/Ethics,Guidance only,Students and Faculty,"The six core principles to AI policy in education are:
+- equal access is important;
+- guaranteeing AI security is critical;
+- AI literacy is essential;
+- rethinking pedagogy is most likely necessary;
+- course assessment will be greatly impacted and may need to be redesigned; and
+- academic integrity is an issue of concern for staff and students alike.
+
+Assessment
+Teachers and course coordinators need to consider if they will include and/or integrate GenAI into assessments and, if so, how to ensure assessments remain authentic and fair. They must critically evaluate current assessment methods that may be susceptible to student use of GenAI and consider replacing them with alternatives.
+
+Integrity
+Students are accountable for all work they submit for assessments, including any content generated or used with the assistance of GenAI. The use of AI tools should be properly cited to state its contributions, alongside a declaration of how human judgment and oversight were exercised to achieve the final product.","Many big keywords: Equity, Privacy/secutiry, AI Literacy, Pegagogy, Academic integrity",,,3,3,Internal
+HK-013,Institutional,Hong Kong,,HKU,Guidelines on the Responsible Use of Generative AI in Research at The University of Hong Kong,Official Guidance,9/8/2025,https://www.rss.hku.hk/research-integrity/GenAI-research-guidelines.pdf,Cautious,Required,Hybrid,Academic Integrity,Privacy/Data/Ethics,Referenced to integrity code,Researchers only,"This document aims to provide general guidance on effective and responsible use of AI
+in research, especially in relation to the use of GenAI. The guidelines supplement and
+complement existing HKU policies, e.g. the Policy on Research Integrity
+(https://www.rss.hku.hk/integrity/rcr/policy) and Intellectual Property Rights Policy
+(https://www.rss.hku.hk/contracts/ipr), which should also be read and applied together
+with these guidelines.
+
+Use of GenAI for ideation and background research is only acceptable if
+• this specific usage of the GenAI system is duly documented and acknowledged;
+• the researcher has verified the accuracy, fairness, and originality (or lack of originality) of text, figures, table and data generated by a GenAI tool;
+• the researcher has verified that all relevant external primary sources are cited and represented fully and fairly; and
+• the use of GenAI does not inevitably disclose patentable inventions
+
+Students and assistants should seek approval from their supervisors on plans to use GenAI tools in the research process, and the usage should be well documented. Research students should also declare their use of GenAI tools and specify their usage at the time of thesis submission for examination.
+",Built upon existing inst. policy.,YM,,1,3,Internal
+HK-014,Institutional,Hong Kong,,HKU,Responsible Use of Generative AI in Research at HKU,Official Guidance,5/14/2026,https://www.rss.hku.hk/integrity/generative-ai,Cautious,Recommended,Hybrid,Academic Integrity,Privacy/Data/Ethics,Guidance only,Students and Faculty,"General Principles of Responsible Use
+1. Research Integrity
+Avoid misleading information and ensure AI-generated content is accurate and do not violate research integrity principles, including fabrication, falsification, or misconduct.
+Be aware of potential biases in GenAI outputs and interpret results critically.
+2. Data Validity and Quality Control
+Critically verify and interpret GenAI-generated content.
+Use human judgment and domain expertise to assess GenAI outputs.
+Do not rely solely on GenAI-generated content for research conclusions or publications.
+[There are several more points]
+
+Under ""Best Practice"": Document Usage: Keep detailed records of how and when GenAI tools are used in the research process. 
+
+Notes
+This webpage aims to foster a culture of responsible and ethical use of GenAI in research, in alignment with HKU's overarching policies on research integrity and data management. It does not replace or supersede the standards set out in the Guidelines on the Responsible Use of Generative AI in Research at The University of Hong Kong. This webpage should also be read in conjunction with other institutional policies and regulations.",They share a open mind for new ai tools and finding the right/postive method to accret with GENAI.,cy,,1,3,Internal
+HK-015,Institutional,Hong Kong,,HKU,Guidebook: Generative Artificial Intelligence for Teaching and Learning ,Official Guidance,2025,https://commoncore.hku.hk/wp-content/uploads/documents/Guidebook%20-%20GenAI%20in%20Teaching%20and%20Learning.pdf,Encouraging,Not specified,Institution-mandated,Pedagogy/Learning,AI Literacy,Guidance only,Faculty only,"The guidebook explores some of these capabilities, presents examples of thoughtful applications, and engages in dialogue about GenAI’s implementations and implications. By drawing on findings from the literature, alongside student and teacher interviews and case studies, this guidebook aims to provide teachers with the knowledge, frameworks, and practical strategies necessary to make informed decisions about GenAI use.
+
+Our hope is for teachers to use AI not merely to enhance existing models of learning but compose with it as a means to unsettle current paradigms and assumptions in higher education teaching and learning to flourish in more creative and impactful trajectories.","Not strictly a ""policy"" document.
+
+But it contains different perspectives and use cases for faculty staff's pondering.",YM,,3,3,Internal
+HK-016,Faculty/Department,Hong Kong,,HKU,Using GenAI Responsibly in Your Research — A Quick Guide for RPG Students,Official Guidance,12/1/2025,https://gradsch.hku.hk/news_and_events/newsletter/using-genai-responsibly-your-research-quick-guide-rpg-students,Functional,Required,Hybrid,Privacy/Data/Ethics,Academic Integrity,Referenced to integrity code,Students and Faculty,"Generative AI (GenAI) is transforming research by offering tools for idea generation, data processing, and content creation. However, its use introduces ethical, legal, and integrity challenges. Misuse can lead to plagiarism, data privacy breaches, and compromised research credibility. Understanding these risks ensures that GenAI is applied as a supportive tool—not a substitute for original thinking. 
+
+For RPG supervisors 
+- GenAI use should be deliberate to allow students to learn responsible research practices both with and without GenAI. 
+- Supervisors should design tasks that include both GenAI-supported and GenAI-free activities. 
+- The Graduate School, Faculties, Schools, Departments, and Centres should provide guidance and support to supervisors. 
+
+For RPG students and trainees 
+- Students and assistants must seek supervisor approval before using GenAI. 
+- Disclosure of GenAI use is mandatory. 
+- Usage should be well documented and meet the criteria for degree conferral (originality and contribution to knowledge). 
+- Students must declare, and justify it when required, the use of GenAI at thesis submission. ","From Grad School.
+
+Most of the content is about how to use it responsibly.
+
+Points to HK-013 at the end.",YM,,2,4,Internal
+HK-017,Faculty/Department,Hong Kong,,HKU,HKU Policy on Use of Generative Artificial Intelligence for Teaching and Learning,University Policy,8/8/2023,https://hkuspace.hku.hk/news/detail/hku-policy-on-use-of-generative-artificial-intelligence-for-teaching-and-learning,Functional,Not specified,Institution-mandated,Academic Integrity,,Referenced to integrity code,Students and Faculty,Please note that HKU SPACE will follow the University’s policy as per previous announcements from the Deputy Director (Academic Services) on the School’s staff intranet.,"HKU Space is the self-financing ""community colleges"" associated with HKU.",YM,,2,4,Internal
+HK-018,Faculty/Department,Hong Kong,,HKU,Guidance for Using Generative AI Tools and Building Applications,Official Guidance,2026,https://innowings.engg.hku.hk/innowing1/aiguide/,Encouraging,Not specified,Not specified,Privacy/Data/Ethics,Equity,Referenced to integrity code,Students only,"Welcome to the world of generative AI and their versatile applications in building innovative solutions. These AI technologies offer powerful tools for creative problem-solving ideas and applications. However, their use must be accompanied by a strong commitment to ethical, responsible, and lawful practices. This document is intended to provide students with comprehensive guidelines for using generative AI tools and responsibly developing applications with them.
+
+[The first 3 guidelines]
+1. Responsible AI: Crafting Ethical and Responsible Contents
+
+Generative AI tools empower us to create content. Use this power responsibly by ensuring that the generated content adheres to ethical and legal standards.
+Refrain from generating content that promotes harm, bias, discrimination, misinformation, or any form of unethical behavior. Test results/contents that may have embed such unethical behavior and avoid using them.
+Avoid any misuse of generative AI tools, including harassment, hate speech, plagiarism, or any illegal activities.
+2. Limitation on created contents: Understanding the Limits of Generated Contents
+
+Recognize that user of AI-generated results/contents should bear the ultimate accountability in using them.
+Recognize the issues of confident responses produced by AI tools that are inaccurate or incoherent with the context, also known as hallucination, and the implications of prompt engineering in AI-generated results/contents.
+Consider whether AI-generated results/contents encourage or discourage diversity and conformity.
+3. Data Protection: Safeguarding User Data
+
+Ensure that the data used with AI tools complies with the University’s privacy and data protection regulations (https://hku.hk/about/policies_reports/ privacy_policy.html).
+Do not collect any unnecessary personal data from users that is not relevant to the application’s functionality.
+Clearly inform individuals who utilize AI tools about the data to be collected and how the data will be used.
+Understand fully how personal data inputted to AI tools will be used beyond generating immediate results.
+Please seek approval from Human Research Ethics Committee (https://www.rss.hku.hk/integrity/ethics-compliance/hrec) before collecting any data for research purposes.","This document is not written for teaching/learning in a course's context.
+
+The tone is like: AI is powerful! So use it with care.
+Focusing on Data.",YM,,3,4,Internal
+HK-019,Faculty/Department,Hong Kong,,HKU,Plagiarism Warning and Guidelines on Use of GenAI,Official Guidance,?,https://english.hku.hk/General_Information/Plagiarism_Warning_and_Guidelines_on_Use_of_GenAI,Cautious,Not specified,Hybrid,Academic Integrity,,Explicit penalties,Students only,"There are severe penalties for plagiarism in the School of English...
+
+POLICY on the use of generative artificial intelligence (genai)
+The University has prepared a policy document outlining the regulations that govern the use of generative artificial intelligence in teaching and learning. For details, please refer to the ""Policy on Use of Generative Artificial Intelligence for Teaching and Learning"" on the HKU Teaching and Learning website (requires HKU Portal Access).
+
+Final advice: In case of doubt, consult your teachers or tutors.","Clearly point the ""policy"" to institutional but the decision to teachers",YM,,1,4,Internal
+HK-020,Faculty/Department,Hong Kong,,HKU,Generative AI Resource Hub,FAQ/Resource Page,2026,https://www.med.hku.hk/en/teaching-and-learning/edtech/resource-hub,Encouraging,Required,Institution-mandated,AI Literacy,Pedagogy/Learning,Referenced to integrity code,Students and Faculty,"A collection of teaching materials and guidelines are being developed to facilitate the application of AI technologies in teaching and learning activities.
+Guidelines on the Use of Generative Artificial Intelligence in Teaching and Learning for Professional Degree Programmes [PDF]
+Generative AI literacy video series for HKUMed...","The [PDF] is password protected.
+
+The video series is quite positive.",YM,,3,4,Internal
+HK-021,Course-wide,Hong Kong,,HKU,ICSS2026_Course Syllabus,Syllabus,12/23/2025,https://summerinstitute.hku.hk/storage/media/Temp%20Files/2026_Course%20Outline/20251223_ICSS2026_Course%20Syllabus_2026-2,Functional,Not specified,Not specified,Professional Readiness,,None stated,Students only,"Students will learn how to collect, process, and analyze large-scale digital and behavioral data using computational tools such as text analysis, network analysis, social media analytics, and LLMs. Emphasis will be placed on real-world applications in social scientific domains.","LLM is one of the many tools covered in this course.
+No ""specific AI policy"" statements",YM,,2,5,Internal
+HK-022,Course-wide,Hong Kong,,HKU,PSYC7319 Course Syllabus,Syllabus,2025,https://psychology.hku.hk/wp-content/programmes/MSocScPsy/CourseOutlines/7319.pdf,Cautious,Required,Instructor decides,Academic Integrity,Pedagogy/Learning,Explicit penalties,Students only,"(p.6) Generative AI usage
+The University provides students with access to GenAI tools. However, the GenAI tools, at least at this stage of development, should not be taken as reliable
+sources of knowledge for this course, for which the answers of GenAI tools to questions are too often (a) loaded with inaccuracies, (b) incomplete, and/or (c)
+misleadingly represented. Students who nonetheless choose to use any GenAI tools for completing their homework assignments should note that the same
+academic integrity standards are applicable for applying the tools as for other references. The application of GenAI, if any, in submitted work should be
+properly acknowledged. Submitting any GenAI output, in part or in whole, for homework assignments without explicit referencing (to indicate that the contents
+concerned are generated by the GenAI sources) will constitute plagiarism.
+AI tools, such as ChatGPT, DALL-E, and similar technologies, are ONLY permitted to help students, fine-tune assignments, or check grammar and writing
+style unless otherwise specified (see the table below). AI tools are NOT permitted to write the entire draft of a writing assignment, paragraphs, or sentences.
+You will receive a failed grade in the corresponding assessment if we suspect the content of your assignments is not written by you.
+It is essential to recognize that students bear responsibility for the content generated through AI queries, ensuring that it remains compliant with intellectual
+property laws, devoid of misinformation, plagiarism, and ethically sound. To maintain adherence to university policies on academic integrity, the utilization
+of AI tools must be acknowledged.
+Assignment/
+Assessment
+Purpose of assignment/Assessment Acceptable use of
+AI tools
+Unacceptable use of AI
+tools
+Reasons for allowing/
+restricting use of AI tools
+In-class group
+presentation and
+essay
+Exercise critical thinking and knowledge
+gained from the course to evaluate the
+chosen topic.
+Using AI tools for
+information
+gathering (finding
+theories and
+relevant research
+studies).
+Using AI tools for
+checking grammar.
+Using AI tools to generate
+the presentation slides or
+presentation scripts.
+Using AI tools to generate
+the outline or drafts of the
+essay.
+Students can use AI tools to
+enhance their information
+gathering. However, the main
+ideas and perspectives should
+come from the students’ own
+thinking.
+Public education
+article
+Encourage students to pay attention to
+societal needs, to consolidate and integrate
+knowledge learned from lectures, and to
+apply the learned knowledge to tackle realworld issues.
+Using AI tools for
+checking grammar.
+Using AI tools to generate
+any content ideas or to
+write the essay.
+This assignment requires the
+student to work on it
+independently.","Statement starts with a big ""However"".
+The accepted and unaccepted uses are stated clearly with rationale with respect to assessment purpose.",YM,,1,5,Internal
+HK-023,Course-wide,Hong Kong,,HKU,PSYC7315 Course Syllabus,Syllabus,2024,https://psychology.hku.hk/wp-content/programmes/MSocScPsy/CourseOutlines/7315.pdf,Cautious,Required,Instructor decides,Academic Integrity,Pedagogy/Learning,Explicit penalties,Students only,"The University provides students with access to GenAI tools. However, their application is (a) not
+necessary for learning the contents of this course and (b) not expected to be advantageous for completing
+the course’s assignments. The GenAI tools, at least at this stage of development, should not be taken as
+reliable sources of knowledge for this course, for which the answers of GenAI tools to questions are too
+often (a) loaded with inaccuracies, (b) incomplete, and/or (c) misleadingly represented. Students who
+nonetheless choose to use any GenAI tools for completing their homework assignments should note that
+the same academic integrity standards are applicable for applying the tools as for other references. The
+application of GenAI, if any, in submitted work should be properly acknowledged. Submitting any
+GenAI output, in part or in whole, for homework assignments without explicit referencing (to
+indicate that the contents concerned are generated by the GenAI sources) will constitute
+plagiarism.","There is a separate section for ""Plagiarism"" detailing the penalties.",YM,,1,5,Internal
+HK-024,Course-wide,Hong Kong,,HKU,UPAD7001 Course Syllabus,Syllabus,2025,https://foa-media.arch.hku.hk/media/upload/2025/10/UPAD7001_Reseach_Design_Seminar_Series_Course-Outline_2025-2026_10Sep.pdf,Functional,Required,Instructor decides,Academic Integrity,,Explicit penalties,Students only,"Generative AI (GAI) –
+1. Students are expected to do their assignments themselves and not asking someone
+else or Generative AI to do it for them.
+2. The use of GAI needs to be properly declared. The declaration should include but
+not limited to which tool(s) and version are used at what stage and for what
+purposes as well as whether GAI generated texts have been further digested and
+rewritten by students in their assignments.
+3. As an English medium university, we are expecting our students to be able to
+submit their assignments in their own written English and not translated by
+someone else, the computer, or Generative AI.
+4. Assignments not done by the students themselves may result in grade penalties
+and constitute academic misconduct. Students are advised to consult and confirm
+with course teachers regarding permitted uses of GAI for individual courses and
+assignments.","Looks like a generic statement, e.g. ""consult and confirm with course teachers... for individual courses and assignments"".
+But this document is a syllabus of a single course - UPAD7001 Research Design Seminar Series.
+
+Using AI = Asking someone else
+
+""MAY result in penalties""",YM,,2,5,Internal
+HK-025,Course-wide,Hong Kong,,HKU,GEOG3422 Course Syllabus,Syllabus,2025,https://bpyloo.hku.hk/wp-content/uploads/2025/09/GEOG3422-Course-Outline-01Sep2025.pdf,Cautious,Required,Instructor decides,Academic Integrity,,Explicit penalties,Students only,"The course instructor and the course TA will check the originality report prior to
+marking. We view breaches of copyright and plagiarism, as well as the improper use of
+GenAI, very seriously.
+• When the detected AI percentage surpass the threshold of 30%, course teachers will
+provide the relevant students with the AI detection reports, and ask them to explain the
+process whereby they arrived at the submitted assignment, accompanied with any
+supporting documents (e.g. initial drafts, sources of data, and references read).
+• When grading the assignments with AI detection rate over the threshold, the teachers
+will consider the AI detection report (including which part of the writing is flagged)
+together with the student explanation.
+• Plagiarized work or work with improper use of AI will receive a fail grade. There may
+also be disciplinary action against the student who commits the above offence.","It is explicit that one ot the reason of using Turnitin is the detection of improper AI use (bigger than 30%).
+
+All negative. No mention of how GenAI may be useful. Almost Prohibitive, but still, 30% is 30%.
+",YM,,1,5,Internal
+HK-026,Institutional,Hong Kong,,PolyU,Guidelines for Students on the Use of Generative Artificial Intelligence,Official Guidance,1/1/2026,https://www.polyu.edu.hk/ar/docdrive/polyu-students/Student-guide-on-the-use-of-GenAI-revised-260105.pdf,Encouraging,Conditional,Hybrid,Academic Integrity,Privacy/Data/Ethics,Referenced to integrity code,Students only,"PolyU takes an open and forward-looking stance on the use of GenAI tools as a positive and creative force in education... While embracing the use of new technology in education, PolyU upholds the principle that students must adhere to high standards of academic integrity... The Student Code of Conduct and the policy on academic integrity apply to the use of GenAI in student work.
+
+In accordance with the above stance, the University emphasises that:
+• students are accountable for their own work; and
+• the use of GenAI (if permitted) in student work should be properly acknowledged.
+
+Some subjects and assessments may not allow or have restrictions on the use of GenAI tools. You may be required to declare the use of GenAI tools (e.g. by completing an honour declaration form) and identify the AI-generated content in your work. You should refer to the relevant
+subject and assessment documents for the specific restrictions and requirements. ... If in doubt, check with your teachers.
+
+Using Generative AI critically | ethical | wisely (DOs and DON'Ts)","There is no need for new rules; simply integrate GenAI into the existing academic integrity framework,which is findinga comermise ground between ai tools and guidelines",cy,,3,3,Internal
+HK-027,Institutional,Hong Kong,PolyU Edcuation Development Centre,PolyU,Generative AI,FAQ/Resource Page,2026,https://www.polyu.edu.hk/edc/explore-a-topic/generative-ai/,Encouraging,Not specified,Instructor decides,Pedagogy/Learning,Academic Integrity,Guidance only,Students and Faculty,"It is expected that the usage of generative AI will become a normal part of learning, teaching, and assessment from 2023/24 Semester One.
+
+attempting to stop their usage seems likely to fail and be counterproductive. Driven by a wish to harness the positives of GenAI tools, this section will act as a home for resources relating to how GenAI tools can be used in PolyU, and for links to guidelines to their usage by students and staff within the institution.","Leveraging GenAi& Redesigning assessment seems the best way to adapt AI streaming,it's a teaching opportunity to seize",cy,,3,3,Internal
+HK-028,Institutional,Hong Kong,,PolyU,Honour Declaration for Individual Assessment/Assignment,Other,?,https://www.polyu.edu.hk/edc/-/media/department/edc/content/explore-a-topic/academic-integrity/expanded-honour-declaration-forms_june-2024.pdf?la=en&hash=EBAD20FDCE2877034F7943181F8793AC,Functional,Required,Hybrid,Academic Integrity,Pedagogy/Learning,Explicit penalties,Students only,"I have read, understood and followed the requirements of this subject and, in particular, the requirements related to using GenAI in this assessment/assignment.The work in this assessment/assignment is my own work. No part of this assessment/assignment
+is taken from other people’s work and/or other sources, including GenAI output, without giving them credit through proper referencing. All references have been clearly cited in the convention snd format appropriate for this assessment/assignment.
+(...) Students who are found committing academic dishonesty will face disciplinary actions. Penalties may include reduced grades, failed subjects, and suspension and expulsion from the University.",,,,2,3,Internal
+HK-029,Institutional,Hong Kong,,PolyU,Student Handbook for Taught Programmes 2025/26 ,Official Guidance,5/1/2026,https://www.polyu.edu.hk/ar/docdrive/polyu-students/student-handbook/Student_Handbook_2025-26_English.pdf,Functional,Required,Instructor decides,Pedagogy/Learning,Academic Integrity,Explicit penalties,Students only,"Cheating: Using unpermitted materials and aids (including Generative Artificial Intelligence (GenAI) if it is explicitly disallowed), during tests, examinations, or other forms of assessment/assignment, be they in-person or online, or using materials/tools/aides (including GenAI) in impermissible ways to perform or complete an academic task
+
+Observe the rules and regulations about using Generative Artificial Intelligence (GenAI) tools set by your Department, programme, and the subject that you are studying.",,,,2,3,Internal
+HK-030,Institutional,Hong Kong,PolyU Academic Registry,PolyU,Must-read for success in your study,Official Guidance,9/26/2025,https://www.polyu.edu.hk/ar/students-in-taught-programmes/notices-to-students/2025/2025-09-26_must-read-for-success-in-your-study/,Cautious,Required,Institution-mandated,Academic Integrity,,Explicit penalties,Students only,"PolyU is strongly committed to preserving academic integrity and has a zero-tolerance policy towards academic dishonesty. Do not commit such acts, e.g. cheating, contract cheating (paying a 3rd party to complete your work), plagiarism (copying others’ work as your own without full acknowledgement, including using generative artificial intelligence (GenAI) tools without proper referencing), impersonation, fabrication and falsification.","Quite serious wording:
+""Do not act in a way that you will regret later.""",,,1,3,Internal
+HK-031,Faculty/Department,Hong Kong,PolyU Design,PolyU,Research Integrity,Official Guidance,2026,https://www.polyu.edu.hk/sd/research/research-integrity/,Functional,Required,Institution-mandated,Academic Integrity,AI Literacy,Guidance only,Students and Faculty,"These guidelines are designed to help colleagues and students at the School of Design use GenAI responsibly, transparently, and ethically. It aligns with university policies while addressing the specific contexts and challenges faced by designers. 
+",The Full Guides PDF are both restricted by a login page,,,2,4,Internal
+HK-032,Faculty/Department,Hong Kong,PolyU English Learning Centre,PolyU,GenAI@ELC,FAQ/Resource Page,2026,https://www.polyu.edu.hk/elc/genai/,Encouraging,Recommended,Institution-mandated,AI Literacy,Academic Integrity,Referenced to integrity code,Students and Faculty,"PolyU takes an open and forward-looking stance on the use of generative artificial intelligence (GenAI) tools as a positive and creative force in education, and encourages the incorporation of such use in innovative learning, teaching, and assessment practices. While embracing the use of new technology in education, PolyU upholds the principle that students must adhere to high standards of academic integrity in all forms of assessments, and should be accountable for their own work. Academic dishonesty includes misrepresenting AI-generated work as one’s own.","A big resource hub for ""learning and teaching""",,,3,4,Internal
+HK-033,Faculty/Department,Hong Kong,PolyU English Learning Centre,PolyU,Using AI to improve your Language Skills (Teacher Version) ,FAQ/Resource Page,5/14/2025,https://www.polyu.edu.hk/elc/docdrive/genai_at_elc/Using_AI_to_improve_your_Language_Skills_Teacher_Version.pdf,Functional,Required,Instructor decides,Pedagogy/Learning,Academic Integrity,Explicit penalties,Faculty only,"The ELC follows the PolyU policy with regard to the use of GenAI tools. In summary, students are accountable for their
+own work. You should always refer to Student Information Sheets and ask your teacher to check when you may use
+GenAI tools in this subject.
+Relying too much on AI can mean that you do not meet the assessment requirements. This will lead to either a low
+grade or fail grade for an assessment. ","""Teacher Version""",,,2,4,Internal
+HK-034,Faculty/Department,Hong Kong,PolyU School of Design,PolyU,Generative AI Use Guideline & Design Research Integrity,Official Guidance,9/1/2025,https://www.polyu.edu.hk/sd/-/media/department/sd/content/research-2/research-integrity/generative-ai-use-guideline--design-research-integrity202509.pdf,Functional,Required,Institution-mandated,Academic Integrity,AI Literacy,Referenced to integrity code,Students only,"PolyU is strongly committed to preserving academic integrity and has a zero-tolerance policy towards academic dishonesty. Do not commit such acts, e.g. cheating, contract cheating,
+plagiarism (copying others’ work as your own without full
+acknowledgement, including using generative artificial intelligence
+(GenAI) tools without proper referencing), impersonation, fabrication
+and falsification. So…","The slides begin with ""What is Research Integrity""",,,2,4,Internal
+HK-035,Faculty/Department,Hong Kong,PolyU Department of English and Communication,PolyU,Generative AI - Inappropriate usage and limitations | Department of English and Communication,FAQ/Resource Page,2026,https://www.polyu.edu.hk/engl/experience-and-opportunities/generative-ai/inappropriate-usage-and-limitations/,Cautious,Required,Not specified,AI Literacy,Pedagogy/Learning,Referenced to integrity code,Students only,"ChatGPT bases its output on previous word patterns without regard to factual accuracy. Generative AI tools should not be relied on due to AI “hallucination”, which is text that appears convincing, but ultimately factually incorrect upon further checking. This has resulted in punishments for lawyers who used ChatGPT to cite cases that did not exist:
+","This is part of their website about GenAI use. This particular page lists improper use cases and examples. It links to PolyU's policies under ""Other Resources"".",cy,,1,4,Internal
+HK-036,Course-wide,Hong Kong,PolyU Department of Building and Real Estate,PolyU,BRE506 (from Programme Requirement Document),Syllabus,9/1/2024,https://www.polyu.edu.hk/bre/docdrive/32111-32112-32113_BRE_AY24-25.pdf,Functional,Required,Instructor decides,Academic Integrity,Pedagogy/Learning,Referenced to integrity code,Students only,"If students intend to use Generative AI (GenAI) tools for brainstorming or
+generating initial ideas, literature search or writing of group assignment
+reports, they are required to declare the use of such tools (e.g. ChatGPT,
+Poe, Google Bard, Microsoft Bing AI, etc) in preparing their submitted
+work, and where and how they have been used, in the preface of their
+group report and to submit their interactive chat history file including the
+writing prompts with the AI chatbots as written evidence in students’ work
+without plagiarism.
+
+If students have adopted AI-generated texts or materials in their work, they must
+properly cite and reference them in accordance with accepted academic
+conventions and citation styles. Students may refer to the Guidelines for
+Students on the Use of Generative Artificial Intelligence (source:
+https://www.polyu.edu.hk/ar/students-in-taught-programmes/use-of-genai)
+developed by the Academic Registry (AR) of PolyU for reference.","Same note for BRE581.
+
+Quite neutral. No penalties mentioned but also no encouraging tone. Just use it with disclosure.",YM,,2,5,Internal
+HK-037,Course-wide,Hong Kong,PolyU Department of Building and Real Estate,PolyU,BRE533 (from Programme Requirement Document),Syllabus,9/1/2024,https://www.polyu.edu.hk/bre/docdrive/32111-32112-32113_BRE_AY24-25.pdf,Encouraging,Not specified,Instructor decides,Pedagogy/Learning,Academic Integrity,None stated,Students only,"The generative AI tools (genAI) is not allowed for
+(1) functions identification and function analysis;
+(2) generating creativity ideas during Value Management workshop
+but encouraged for
+(1) search for typical examples or cases of value management
+(2) helping improve structure, grammar, writing, presentation slides,
+etc.","A bit more positive than HK-036 (from the same department). ""Encouraged"" for searching and writing. No requirement or consequences stated.",YM,,3,5,Internal
+HK-038,Course-wide,Hong Kong,,PolyU,ENGL5037 ,Syllabus,6/1/2024,https://www.polyu.edu.hk/engl/-/media/department/engl/content/study/full-subject-list/level-5-subjects/engl5037_20241_v062024.pdf?rev=4b025a9c057a4610ae7412df21ff9f4c&hash=8D2390F6F57D0EBFBD4658D32FC64610,Functional,Not specified,Not specified,Professional Readiness,Privacy/Data/Ethics,None stated,Students only,"ILOs:
+Upon completion of the subject, students will be able to:
+a. Identify key affordances and limitations related to
+generative AI and its usage as an analytical tool.
+b. Showcase proficiency in using generative AI as an
+analytical tool in various professional contexts.
+c. Identify key affordances and limitations of generative AI
+as a content generator and as a communicative tool.
+d. Showcase proficiency in using generative AI as a contentgenerating tool.
+e. Understand the various forms of bias inherent in, and the
+relevant concerns with, AI-generated responses.
+f. Use generative AI appropriate for creative problemsolving.","GenAI is the focus of the course.
+The course talks about ""affordances and limitations"", i.e. what AI can or cannot do as a tool.
+No ""specific AI policy"" stated.",YM,,2,5,Internal
+HK-039,Course-wide,Hong Kong,,PolyU,MM6452,Syllabus,4/1/2024,https://www.polyu.edu.hk/mm/-/media/department/mm/content/study/subject-syllabi_tpg/mm6452.pdf,Functional,Not specified,Not specified,Professional Readiness,AI Literacy,None stated,Students only,"Individual AI content design: The individual AI content design assesses students'
+comprehension of various aspects, including Generative AI models, multi-mode AI content
+generation, and the application and evaluation of AI content in different business scenarios.","A very ""applied"" course on GenAI.
+No ""specific AI policy"" stated.",YM,,2,5,Internal
+HK-040,Course-wide,Hong Kong,,PolyU,COMP5571 ,Syllabus,8/1/2025,https://www.polyu.edu.hk/comp/docdrive/tpg/subject/COMP5571.pdf,Functional,Not specified,Not specified,Professional Readiness,Privacy/Data/Ethics,None stated,Students only,"The subject is envisioned for students to embrace and leverage the
+potential of Generative Artificial Intelligence (AI). It will primarily
+focus on the nature, development, and implications of Generative AI,
+its role in innovative research methods, its application across various
+disciplines, and its ethical and societal implications. ","A very ""applied"" course on GenAI.
+No ""specific AI policy"" stated.",YM,,2,5,Internal
+HK-041,Institutional,Hong Kong,,Lingnan,Guidelines for Using Generative Artificial Intelligence (GAI) Tools at Lingnan University,University Policy,10/1/2024,https://www.ln.edu.hk/tlc/f/page/107180/Guidelines%20for%20Using%20GAI%20Tools%20%28Oct%202024%29.pdf,Cautious,Required,Institution-mandated,Pedagogy/Learning,AI Literacy,Guidance only,Students and Faculty,"""While Lingnan University enthusiastically embraces innovative technologies in education, it firmly upholds the principle that students must adhere to rigorous standards of academic integrity in all forms of assessments.""
+
+
+""From Term 2, 2024-25, students are allowed to use GAI tools to assist them in preparing assignments, assessments, and other educational practices.""","teachers can turn it off for their course, students must declare every use, and academic integrity rules still run the show",cy,,1,3,Internal
+HK-042,Institutional,Hong Kong,,Lingnan,"Best Practices for Ethical and Responsible Use of Generative Artificial Intelligence (GAI) Tools in Course Assessments
+",Official Guidance,8/1/2025,https://www.ln.edu.hk/tlc/f/page/107180/Best%20Practices%20for%20Ethicial%20and%20Responsibilities%20Use%20of%20GAI%20%28Aug%202025%29.pdf,Encouraging,Required,Hybrid,Academic Integrity,Privacy/Data/Ethics,Referenced to integrity code,Students and Faculty,"To enhance the overall learning experience for our students, Lingnan University has decided to allow the use of ChatGPT and other GAI tools from the 2023-24 academic year. However, users should use these tools responsibly and ethically, and fully understand their potential and limitations. Upholding academic integrity is of utmost importance to all students. This document outlines the principles, practices, and actions that teaching staff and students need to be aware of/take regarding the implications of using GAI tools in course assessments. Students are encouraged to consult with their teaching staff if they have any questions.
+
+Course Assignment and Assessment (Open book) - Unless otherwise specified by the teaching staff, GAI tools are allowed to be used by students.
+Course Assessment (Closed book) & Final Examination (Closed book) - Unless otherwise specified by teaching staff, GAI tools are allowed to be used by students.
+
+Students should declare their use of GAI tools and reflect on the process. Students should indicate which GAI tools they have used and explain how the materials generated have been incorporated into their submitted work.",The default is: Students are allowed to use GenAI tools. It is repeated multiple times in the full text.,YM,,3,3,Internal
+HK-043,Institutional,Hong Kong,,Lingnan,Use of Generative Artificial Intelligence (GAI) Tools Term 1 2024-25,University Policy,8/9/2024,https://www.ln.edu.hk/tlc/f/page/107180/Use%20of%20Generative%20Artificial%20Intelligence%20%28GAI%29%20Tools%20Term%201%202024-25.pdf,Cautious,Required,Instructor decides,Academic Integrity,Privacy/Data/Ethics,Referenced to integrity code,Faculty only,"In Term 1, 2024-25, teaching staff can choose to allow their students to use GAI tools to assist
+their preparation for assignments, assessments, and other educational practices. Teaching
+staff should communicate with students clearly about the use or not allowing the use of GAI
+tools through course outlines, syllabus, Moodle, or other written means of communication to
+prevent misunderstandings.
+
+Declaration
+If the use of GAI tools is allowed, students must declare the use of GAI tools or other Artificial
+Intelligence (AI) technology in their assignments and assessments using a sample template ","The first line is ""Dear colleagues""
+
+Term 1: The teacher decides whether to allow it or not. Term 2: The university plans to make it universally allowed - teachers should adapt to it in advance.",cy,,1,3,Internal
+HK-044,Institutional,Hong Kong,Lingnan U Teaching and Learning Centre,Lingnan,Generative Artificial Intelligence,FAQ/Resource Page,2026,https://www.ln.edu.hk/tlc/generative-artificial-intelligence,Functional,Not specified,Institution-mandated,Privacy/Data/Ethics,AI Literacy,Referenced to integrity code,Students and Faculty,"Disclaimer:
+Please be aware that artificial intelligence tools may reflect biases present in the data used to train them. These biases can influence the responses provided, potentially leading to incomplete, inaccurate, or skewed information. Always verify critical information from multiple reliable sources and use your judgment when interpreting AI-generated content.
+
+When using open platform AI tools, please ensure adherence to Lingnan University Information Security Data Governance and Protection, and Data Privacy Policy.
+For detailed information, please refer to:
+Data Governance and Protection; 
+Data Privacy and Protection for Lingnan University",A resource page for both students and staff. Disclaimer is a very small part of the whole page/site.,YM,,2,3,Internal
+HK-045,Institutional,Hong Kong,Lingnan U Academic Quality Assurance Manual,Lingnan,Chapter 4 - Quality Assurance and Enhancement of Student Assessment,FAQ/Resource Page,2026,https://www.ln.edu.hk/main/aqa/table-of-contents/chapter-four,Encouraging,Not specified,Hybrid,Pedagogy/Learning,Academic Integrity,None stated,Students and Faculty,"To enhance the overall learning experience for students, the University has decided to allow the use of ChatGPT and other Generative AI tools from the 2023-24 academic year.
+         
+In July 2023, the Teaching and Learning Centre issued the “Best Practices for Ethical and Responsible Use of Generative Artificial Intelligence (GAI) Tools in Course Assessments” which outline the principles, practices, and actions that need to be aware of/taken by course instructors and students regarding the implications of using GAI tools in course assessments. In October 2024, the Senate approved the updated “Best Practices for Ethical and Responsible Use of GAI Tools in Course Assessment” (Appendix I) and the “Guidelines for Using GAI Tools at Lingnan University” (Appendix J) effective from Term 2 of the 2024-25 academic year. Students are allowed to use GAI tools to assist them in preparing assignments, assessments, and other educational practices, provided these tools are used ethically and responsibly, in accordance with the GAI Guidelines. However, teaching staff may still seek prior approval from the relevant Head of Department/Programme Director NOT to allow students to use GAI tools (in part or their entirety) to prepare assignments, assessments, and other educational practices.","This is NOT the UGC Audit report.
+
+From the preface:
+""Bringing together all the policies, regulations and guidelines pertaining to the assurance and enhancement of academic quality, it is easily available to all relevant staff and students.""
+
+The Institutional stance is Encouraging, but teachers can seek approval  NOT to allow  students to use GenAI. ""Head of Department/Programme Director"" has the final say.",YM,,3,3,Internal
+HK-046,Faculty/Department,Hong Kong,"Lingnan University
+Department of Translation",Lingnan,AI Usage Policy for UG and TPG Programmes,University Policy,1/16/2025,https://www.ln.edu.hk/tran/f/page/116062/ai-usage-policy-for-ug-and-tpg-programmes.pdf,Cautious,Recommended,Hybrid,Academic Integrity,,Explicit penalties,Students and Faculty,"Starting from Term 2 of the 2024-25 academic year, Lingnan students are allowed to use AI tools, but at the same time they need to follow the university's academic and ethical guidelines.
+
+It is agreed by the Department Board that the ceiling cap of AI usage is 40%.* If the AI detection rate
+is higher than this, marks will be deducted from students’ work because of lack of originality. Subject
+teachers have the discretion to impose a penalty for any AI usage higher than the cap rate.
+Faculty members of the Department of Translation are expected to reiterate the University Guidelines
+and the Departmental Policy on AI usage to students, while students, both at BA and MA levels, should
+follow the University Guidelines and Departmental Policy on AI usage carefully",Conditional permission with hard numerical limits and total disclosure — a translation department's pragmatic answer to a tool that can do its students' homework,cy,,1,4,Internal
+HK-047,Faculty/Department,Hong Kong,"Lingnan University
+Department of Translation",Lingnan,AI Enabled Tools Declaration Form,Other,9/22/2025,https://view.officeapps.live.com/op/view.aspx?src=https%3A%2F%2Fwww.ln.edu.hk%2Ftran%2Ff%2Fpage%2F116062%2FAI%2520Enabled%2520Tools%2520Declaration%2520Form_Translation_20250922.docx&wdOrigin=BROWSELINK,Functional,Required,Faculty/Department decides,Academic Integrity,,Referenced to integrity code,Students only,,This Declaration Form points back to the Institutional Guidelines (HK-041) and Best Practices (HK-042).,YM,,2,4,Internal
+HK-048,Faculty/Department,Hong Kong,"Lingnan U
+School of Graduate Studies",Lingnan,GUIDEBOOK FOR RESEARCH POSTGRADUATE STUDENTS,Official Guidance,10/1/2025,https://www.ln.edu.hk/sgs/f/upload/114745/Guidebook_for_RPg_Students.pdf,Cautious,Required,Institution-mandated,Academic Integrity,,Referenced to integrity code,Students only,"""It is agreed by the Department Board that the ceiling cap of AI usage is 40%. If the AI detection rate is higher than this, marks will be deducted from students' work because of lack of originality.""","This is a guidebook from the Grad School.
+
+GAI is mentioned under ""Academic Honesty"".",YM,,1,4,Internal
+HK-049,Faculty/Department,Hong Kong,"Lingnan U Centre for English and Additional
+Languages",Lingnan,"Use of Generative AI in Assessed Work
+",University Policy,?,https://www.ln.edu.hk/ceal/f/page/109859/CEAL%20Gen%20AI%20Policy%20for%20students.pdf,Cautious,Required,Faculty/Department decides,Academic Integrity,,Explicit penalties,Students only,"If there is a question over the inappropriate use of GenAI (“authorship”) we will carry out an
+investigation. If you are found to, on the balance of probabilities, have used Gen AI inappropriately,
+you will be asked to rewrite and resubmit. There will also be a cap on your grade.
+For the first time this happens your essay grade will be capped at 60%. The second time the cap will
+be 40%. The third time will be raised as a case of academic misconduct to the exam board. Please
+note that records will be kept across all LUE courses. This means that if you submit inappropriate
+work in LUE1001, and then again in 4001, this will be seen as the second incidence.
+
+You should keep a portfolio of your work (called the “work in progress folder”), including screenshots
+of interactions with GenAI, drafts, plans and anything you do in preparation for the assessment. You
+will submit all of this as a zip file alongside the essay. This will not be assessed and there is no penalty
+for non-submission. However, if there is a question over the authorship of your essay this can be
+taken into account.
+
+If you are suspected of using AI inappropriately, the following will happen.
+- We will arrange a time to have a meeting. There will be two members of staff in this meeting,
+and you can also bring a friend. This friend can give moral support and also help with language, if
+needed
+- We will ask you questions about your essay and the process of writing it. We will also give
+you a chance to explain anything that you think is important. (Please note that not having enough
+time is not a reasonable explanation).
+- We will then send you an email with our decision.
+",Pretty negative.,YM,,1,4,Internal
+HK-050,Faculty/Department,Hong Kong,"Lingnan University
+Department of History",Lingnan,Guidelines for Using Generative Artificial Intelligence (GAI) Tools,University Policy,?,https://www.ln.edu.hk/history/f/upload/105794/345198/HIST%20Departmental%20policy%20on%20GAI%20tools.pdf,Functional,Required,Hybrid,Pedagogy/Learning,Academic Integrity,Referenced to integrity code,Students and Faculty,"Starting Term 2, 2024-25, students are permitted to use GAI tools, including editing and spellchecking tools such as Grammarly and DeepL, to assist with their course assignments, provided
+they adhere to the University’s guidelines. 
+
+In line with the University’s best practices for the use of GAI tools, our department has
+developed additional guidelines. Students must declare the use of GAI tools, specifying which
+GAI tools they used and how they utilized them for their assignments. Examples of GAI usage
+include brainstorming ideas, generating reference lists, and editing.
+Sample Declaration: [cut]
+Students should include this declaration in their assignment. Meanwhile, faculty members must
+remind students of the University Guidelines and the Departmental Policy on using GAI tools.","Built upon the institutional rules.
+Starts with how GenAI can be helpful in their work. (""permitted"", not encouraged/welcome)
+Mentions both students and faculty members.",YM,,2,4,Internal
+HK-051,Course-wide,Hong Kong,,Lingnan,CDS2002 Course Syllabus,Syllabus,?,https://www.ln.edu.hk/sds/dai/ds/f/page/105561/CDS2002%20Introduction%20to%20Artificial%20Intelligence%20%28Required%29.190825.pdf,Functional,Not specified,Institution-mandated,Academic Integrity,Professional Readiness,Referenced to integrity code,Students only,"Students must adhere to the University’s guidelines and practices when using Generative
+Artificial Intelligence (GAI) tools. The official documents “Guidelines for Using GAI
+Tools at Lingnan University” and “Best Practices for Ethical and Responsible Use of
+GAI Tools in Course Assessments” can be found
+here: https://www.ln.edu.hk/tlc/generative-artificial-intelligence/gai-guidelines-bestpractices .","This ""Intro to AI"" course uses the standard template:
+https://tlc.ln.edu.hk/SyllabusTool/
+
+Course content is quite hardcore. Lots of advanced Computer Science stuff, not just everyday literacy.",YM,,2,5,Internal
+HK-052,Course-wide,Hong Kong,,Lingnan,"CDS3003 Course Syllabus
+",Syllabus,?,https://www.ln.edu.hk/sds/dai/ds/f/page/105561/CDS3003%20Machine%20Learning%20%28Required%29.190825.pdf,Functional,Not specified,Institution-mandated,Academic Integrity,Professional Readiness,Referenced to integrity code,Students only,"Students must adhere to the University’s guidelines and practices when using Generative
+Artificial Intelligence (GAI) tools. The official documents “Guidelines for Using GAI
+Tools at Lingnan University” and “Best Practices for Ethical and Responsible Use of
+GAI Tools in Course Assessments” can be found
+here: https://www.ln.edu.hk/tlc/generative-artificial-intelligence/gai-guidelines-bestpractices .","This ""Machine Learning"" course uses the standard template:
+https://tlc.ln.edu.hk/SyllabusTool/
+
+Course content is quite hardcore. Lots of advanced Computer Science stuff, not just everyday literacy.",YM,,2,5,Internal
+HK-053,Course-wide,Hong Kong,"Lingnan U
+Faculty of Business",Lingnan,Master of Science in Artificial Intelligence and Business Analytics Student Handbook,Syllabus,2023?,https://www.ln.edu.hk/sds/dai/mscaiba/f/page/72803/MScAIBA%20-%20Student%20Handbook%202023-24.pdf,Functional,Not specified,Institution-mandated,Academic Integrity,Privacy/Data/Ethics,Referenced to integrity code,Students only,"7.2.1 Use of Advanced Technologies
+To support the University's strategy on use of advanced technologies such as ChatGPT and other generative AI tools to facilitate learning, ITSC launched the ChatGPT service that is built on Microsoft's Open AI services. Users should agree to the terms and conditions to ensure that tool is used appropriately and effectively while adhering to strict academic integrity standards. Details of the terms and conditions: https://chatgpt.In.edu.hk/. Please also refer to the the Best Practices for Ethical and Responsible Use of Generative Artificial Intelligence (AI) Tools in Course Assessments on TLC's website:
+https://www.ln.edu.hk/f/upload/84485/AI%20Practice_updated%2024%20Jul%202023_final.pdf",This Master Programme document directs readers to (an earlier version of) the Institutional Best Practice document (HK-042).,YM,,2,5,Internal
+HK-054,Course-wide,Hong Kong,,Lingnan,SPA1302 Course Syllabus,Syllabus,?,https://www.ln.edu.hk/ceal/f/page/109868/SPA1302.pdf,Cautious,Not specified,Faculty/Department decides,Pedagogy/Learning,Academic Integrity,Explicit penalties,Students only,"(5) Students must adhere to the University’s guidelines and practices when using Generative
+Artificial Intelligence (AI) tools. The official documents “Guidelines for Using GAI Tools at Lingnan
+University” and “Best Practices for Ethical and Responsible Use of GAI Tools in Course
+Assessments” can be found here: https://www.ln.edu.hk/tlc/generative-artificial-intelligence/gaiguidelines-best-practices.
+
+Use of Generative AI
+At CEAL we adopt a forward thinking and pragmatic approach to the use of Generative AI by
+students.
+Each assessment will carry guidelines about what type of AI use is acceptable. If you cannot find
+these, or if they are unclear, please ask your teacher.
+If there is a question over the inappropriate use of GenAI (“authorship”) we will carry out an
+investigation. If you are found to, on the balance of probabilities, have used Gen AI
+inappropriately, you will be asked to rewrite and resubmit. There will also be a cap on your grade
+More information can be found at: CEAL Gen AI Policy for
+students.pdf","In addition to the template message, the CEAL adoption (HK-049) is mentioned.
+
+Each assessment will have its specific GenAI guidelines. It is phrased as if students are expected to use GenAI, but we cannot be sure unless we see the actual assessments.
+
+If we read HK-049, the requirements and penalties are pretty harsh. But those are not mentioned in this syllabus document.",YM,,1,5,Internal
+HK-055,Course-wide,Hong Kong,,Lingnan,CCC8013 Course Syllabus,Syllabus,?,https://www.ln.edu.hk/dos/f/upload/109663/CCC8013%20The%20Process%20of%20Science%20-%20Revised%20Syllabus%20%20Rubrics_20240807.pdf,Encouraging,Required,Instructor decides,Academic Integrity,Pedagogy/Learning,None stated,Students only,"5. Students are allowed to employ AI-enabled tools in their course assignments of Tech
+Report and Group Presentation. Declaration of the use of Generative AI tools and the
+explanation how the generated materials have been incorporated into the assignments
+should be included in the submitted assignments. Besides, students should reference the
+Generative AI generated materials in their work with accepted academic conventions","This is a rare case where the statement details what students are allowed to do with AI.
+Does NOT use the standard template.
+
+Consequences are not mentioned.",YM,,3,5,Internal
