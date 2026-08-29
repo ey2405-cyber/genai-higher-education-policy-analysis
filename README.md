@@ -89,9 +89,12 @@ Coding qualitative policy dimensions also involves interpretation, so inter-rate
 
 ## Repository Contents
 
-`analysis/` — Python analysis and statistical modeling  
-`figures/` — Selected visualizations  
-`data/` — Data documentation and, where permitted, analytical dataset
+## Repository Structure
+
+- [`analysis/`](analysis/) — Python and R statistical analysis and modeling
+- [`figures/`](figures/) — Selected data visualizations
+- [`data/`](data/) — Data documentation and, where permitted, analytical dataset
+- [`documentation/`](documentation/) — Methodology and coding framework
 
 ## Authors
 
